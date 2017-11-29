@@ -1,0 +1,23 @@
+{
+  "name": "phil404/RiotAPI",
+  "description": "Deliver an easy way to talk with the League Of Legends Api by RiotGames",
+  "type": "library",
+  "version": "0.0.1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Philipp Westphalen",
+      "email": "philipp@westphalen.hamburg",
+      "homepage": "https://westphalen.hamburg"
+    }
+  ],
+  "require-dev": {
+
+  },
+  "require": {
+    "php": "^7.0"
+  },
+  "autoload": {
+
+  }
+}
