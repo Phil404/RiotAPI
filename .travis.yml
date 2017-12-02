@@ -1,0 +1,26 @@
+language: php
+
+sudo: false
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+env:
+  global:
+    - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
+
+before_install:
+  - composer self-update
+  - composer clear-cache
+
+install:
+ - travis_retry composer update $DEFAULT_COMPOSER_FLAGS
+
+script:
+ - vendor/bin/phpcs --colors --severity=1 --standard=PSR2 src/
+ - vendor/bin/phpunit --coverage-clover=coverage.xml --configuration=phpunit.xml
+
+notifications:
+  email: false
