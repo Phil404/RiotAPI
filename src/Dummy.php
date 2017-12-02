@@ -2,12 +2,11 @@
 
 namespace Phil404\RiotAPI;
 
-class Dummy{
+class Dummy
+{
 
     public static function add($a, $b)
     {
         return $a + $b;
     }
-
 }
-
