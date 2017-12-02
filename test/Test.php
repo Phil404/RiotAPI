@@ -10,8 +10,8 @@ use PHPUnit\Framework\TestCase;
 
 require "../src/dummy.php";
 
-class Test extends TestCase
-{
+class Test extends TestCase{
+
     public function testAdd(){
         $this->assertEquals(5, add(2, 3));
     }
