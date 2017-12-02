@@ -1,18 +1,11 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: phili
- * Date: 29.11.2017
- * Time: 19:37
- */
 
 use PHPUnit\Framework\TestCase;
+use Phil404\RiotAPI\Dummy;
 
-require "../src/dummy.php";
-
-class Test extends TestCase{
+class TestDummy extends TestCase{
 
     public function testAdd(){
-        $this->assertEquals(5, add(2, 3));
+        $this->assertEquals(5, Dummy::add(2, 3));
     }
 }
