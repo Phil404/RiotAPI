@@ -17,5 +17,4 @@ class Dummy
     {
         return ($a + $b);
     }//end add()
-
 }//end class
