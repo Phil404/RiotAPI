@@ -16,7 +16,5 @@ class Dummy
     public static function add(int $a, int $b)
     {
         return ($a + $b);
-
     }//end add()
-
 }//end class
