@@ -28,7 +28,7 @@ class Service
     /**
      * @param string $status
      */
-    public function setStatus(string $status): void
+    public function setStatus(string $status)
     {
         $this->_status = $status;
     }
