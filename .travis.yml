@@ -18,7 +18,7 @@ install:
  - travis_retry composer update $DEFAULT_COMPOSER_FLAGS
 
 script:
- - vendor/bin/phpcs --colors --severity=1 --standard=PSR2 src/
+ - vendor/bin/phpcs --colors --severity=1 --standard=ZEND src/
  - vendor/bin/phpunit --coverage-clover=coverage.xml --configuration=phpunit.xml
 
 notifications:
