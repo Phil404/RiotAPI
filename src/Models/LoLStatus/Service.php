@@ -44,7 +44,7 @@ class Service
     /**
      * @param string $name
      */
-    public function setName(string $name): void
+    public function setName(string $name)
     {
         $this->_name = $name;
     }
@@ -60,7 +60,7 @@ class Service
     /**
      * @param string $slug
      */
-    public function setSlug(string $slug): void
+    public function setSlug(string $slug)
     {
         $this->_slug = $slug;
     }
@@ -76,7 +76,7 @@ class Service
     /**
      * @param array $incidents
      */
-    public function setIncidents(array $incidents): void
+    public function setIncidents(array $incidents)
     {
         $this->_incidents = $incidents;
     }

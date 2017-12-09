@@ -24,7 +24,7 @@ class Translation
     /**
      * @param string $locale
      */
-    public function setLocale(string $locale): void
+    public function setLocale(string $locale)
     {
         $this->_locale = $locale;
     }
@@ -40,7 +40,7 @@ class Translation
     /**
      * @param string $content
      */
-    public function setContent(string $content): void
+    public function setContent(string $content)
     {
         $this->_content = $content;
     }
@@ -56,7 +56,7 @@ class Translation
     /**
      * @param string $updatedAt
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updatedAt)
     {
         $this->_updatedAt = $updatedAt;
     }

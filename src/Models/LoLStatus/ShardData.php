@@ -36,7 +36,7 @@ class ShardData
     /**
      * @param string $name
      */
-    public function setName(string $name): void
+    public function setName(string $name)
     {
         $this->_name = $name;
     }
@@ -52,7 +52,7 @@ class ShardData
     /**
      * @param string $regionTag
      */
-    public function setRegionTag(string $regionTag): void
+    public function setRegionTag(string $regionTag)
     {
         $this->_regionTag = $regionTag;
     }
@@ -68,7 +68,7 @@ class ShardData
     /**
      * @param string $hostname
      */
-    public function setHostname(string $hostname): void
+    public function setHostname(string $hostname)
     {
         $this->_hostname = $hostname;
     }
@@ -84,7 +84,7 @@ class ShardData
     /**
      * @param string $slug
      */
-    public function setSlug(string $slug): void
+    public function setSlug(string $slug)
     {
         $this->_slug = $slug;
     }
@@ -100,7 +100,7 @@ class ShardData
     /**
      * @param array $locales
      */
-    public function setLocales(array $locales): void
+    public function setLocales(array $locales)
     {
         $this->_locales = $locales;
     }
@@ -116,7 +116,7 @@ class ShardData
     /**
      * @param array $services
      */
-    public function setServices($services): void
+    public function setServices($services)
     {
         $this->_services = $services;
     }

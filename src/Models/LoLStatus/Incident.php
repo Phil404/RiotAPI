@@ -28,7 +28,7 @@ class Incident
     /**
      * @param bool $active
      */
-    public function setActive(bool $active): void
+    public function setActive(bool $active)
     {
         $this->_active = $active;
     }
@@ -44,7 +44,7 @@ class Incident
     /**
      * @param string $createdAt
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $createdAt)
     {
         $this->_createdAt = $createdAt;
     }
@@ -60,7 +60,7 @@ class Incident
     /**
      * @param integer $id
      */
-    public function setId(int $id): void
+    public function setId(int $id)
     {
         $this->_id = $id;
     }
@@ -76,7 +76,7 @@ class Incident
     /**
      * @param array $updates
      */
-    public function setUpdates(array $updates): void
+    public function setUpdates(array $updates)
     {
         $this->_updates = $updates;
     }

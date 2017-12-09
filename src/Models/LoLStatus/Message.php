@@ -40,7 +40,7 @@ class Message
     /**
      * @param string $severity
      */
-    public function setSeverity(string $severity): void
+    public function setSeverity(string $severity)
     {
         $this->_severity = $severity;
     }
@@ -56,7 +56,7 @@ class Message
     /**
      * @param string $author
      */
-    public function setAuthor(string $author): void
+    public function setAuthor(string $author)
     {
         $this->_author = $author;
     }
@@ -72,7 +72,7 @@ class Message
     /**
      * @param string $createdAt
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $createdAt)
     {
         $this->_createdAt = $createdAt;
     }
@@ -88,7 +88,7 @@ class Message
     /**
      * @param string $updatedAt
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updatedAt)
     {
         $this->_updatedAt = $updatedAt;
     }
@@ -104,7 +104,7 @@ class Message
     /**
      * @param string $content
      */
-    public function setContent(string $content): void
+    public function setContent(string $content)
     {
         $this->_content = $content;
     }
@@ -120,7 +120,7 @@ class Message
     /**
      * @param integer $id
      */
-    public function setId(int $id): void
+    public function setId(int $id)
     {
         $this->_id = $id;
     }
@@ -136,7 +136,7 @@ class Message
     /**
      * @param array $translations
      */
-    public function setTranslations(array $translations): void
+    public function setTranslations(array $translations)
     {
         $this->_translations = $translations;
     }
