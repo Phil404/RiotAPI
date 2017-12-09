@@ -10,8 +10,7 @@ class LoLStatusTest extends TestCase
     {
         $response = LolStatus::getStatus();
         $this->assertTrue(
-            $response instanceof \Phil404\RiotAPI\Models\LoLStatus\ShardData,
-            "The response of LoLStatus is not the ShardData model."
+            $response instanceof \Phil404\RiotAPI\Models\LoLStatus\ShardData
         );
     }
 }
