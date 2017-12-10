@@ -16,8 +16,8 @@ class Translation
         if (array_key_exists("content", $args)) {
             $this->_content = $args['content'];
         }
-        if (array_key_exists("updatedAt", $args)) {
-            $this->_updatedAt = $args['updatedAt'];
+        if (array_key_exists("updated_at", $args)) {
+            $this->_updatedAt = $args['updated_at'];
         }
     }
 

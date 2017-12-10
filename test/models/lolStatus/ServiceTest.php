@@ -29,6 +29,25 @@ class ServiceTest extends TestCase
         $this->assertEquals([$incident], $service->getIncidents());
     }
 
+    public function testConstructorWithIncidentsAsArray()
+    {
+        $service = new Service(
+            ["status" => "online",
+            "incidents" => [["id" => 123]]]
+        );
+
+        $this->assertTrue($service->getIncidents()[0] instanceof Incident);
+        $this->assertEquals(123, $service->getIncidents()[0]->getId());
+        $this->assertEquals(1, sizeof($service->getIncidents()));
+    }
+
+    public function testConstructorWithoutIncidents()
+    {
+        $service = new Service(["incidents" => []]);
+
+        $this->assertEquals(0, sizeof($service->getIncidents()));
+    }
+
     public function testSetAndGetStatus()
     {
         $service = new Service();

@@ -15,7 +15,7 @@ class TranslationTest extends TestCase
     public function testConstructor()
     {
         $translation = new Translation(
-            ["locale" => "de_DE", "content" => "foo", "updatedAt" => "DateA"]
+            ["locale" => "de_DE", "content" => "foo", "updated_at" => "DateA"]
         );
         $this->assertEquals("de_DE", $translation->getLocale());
         $this->assertEquals("foo", $translation->getContent());

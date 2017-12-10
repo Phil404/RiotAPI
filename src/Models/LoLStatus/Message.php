@@ -20,11 +20,11 @@ class Message
         if (array_key_exists("author", $args)) {
             $this->_author = $args['author'];
         }
-        if (array_key_exists("createdAt", $args)) {
-            $this->_createdAt = $args['createdAt'];
+        if (array_key_exists("created_at", $args)) {
+            $this->_createdAt = $args['created_at'];
         }
-        if (array_key_exists("updatedAt", $args)) {
-            $this->_updatedAt = $args['updatedAt'];
+        if (array_key_exists("updated_at", $args)) {
+            $this->_updatedAt = $args['updated_at'];
         }
         if (array_key_exists("content", $args)) {
             $this->_content = $args['content'];
@@ -138,7 +138,21 @@ class Message
      */
     public function setTranslations(array $translations)
     {
-        $this->_translations = $translations;
+        $qualifiedTranslations = [];
+        if (sizeof($translations) >= 1) {
+            foreach ($translations as $translation) {
+                $counter = sizeof($qualifiedTranslations);
+                if ($translation instanceof Translation) {
+                    $qualifiedTranslations[$counter] = $translation;
+                } else {
+                    $createdTranslation = new Translation($translation);
+                    if ($createdTranslation != null) {
+                        $qualifiedTranslations[$counter] = $createdTranslation;
+                    }
+                }
+            }
+        }
+        $this->_translations = $qualifiedTranslations;
     }
 
     /**

@@ -18,8 +18,8 @@ class MessageTest extends TestCase
         $message = new Message(
             ["severity" => "foo",
             "author" => "bar",
-            "createdAt" => "DateA",
-            "updatedAt" => "DateA",
+            "created_at" => "DateA",
+            "updated_at" => "DateA",
             "content" => "foo",
             "id" => 123,
             "translations" => [$translation]]
@@ -32,6 +32,30 @@ class MessageTest extends TestCase
         $this->assertEquals("foo", $message->getContent());
         $this->assertEquals(123, $message->getId());
         $this->assertEquals([$translation], $message->getTranslations());
+    }
+
+    public function testConstructorWithTranslationAsArray()
+    {
+        $message = new Message(
+            ["severity" => "foo",
+            "translations" => [["locale" => "de_DE"]]]
+        );
+
+        $this->assertTrue(
+            $message->getTranslations()[0] instanceof Translation
+        );
+        $this->assertTrue(sizeof($message->getTranslations()) == 1);
+        $this->assertEquals(
+            "de_DE",
+            $message->getTranslations()[0]->getLocale()
+        );
+    }
+
+    public function testConstructorWithEmptyTranslation()
+    {
+        $message = new Message(["translations" => []]);
+
+        $this->assertTrue(sizeof($message->getTranslations()) == 0);
     }
 
     public function testSetAndGetSeverity()

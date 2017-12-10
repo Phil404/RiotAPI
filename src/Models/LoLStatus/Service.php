@@ -78,7 +78,21 @@ class Service
      */
     public function setIncidents(array $incidents)
     {
-        $this->_incidents = $incidents;
+        $qualifiedIncidents = [];
+        if (sizeof($incidents) >= 1) {
+            foreach ($incidents as $incident) {
+                $counter = sizeof($qualifiedIncidents);
+                if ($incident instanceof Incident) {
+                    $qualifiedIncidents[$counter] = $incident;
+                } else {
+                    $createdIncident = new Incident($incident);
+                    if ($createdIncident != null) {
+                        $qualifiedIncidents[$counter] = $createdIncident;
+                    }
+                }
+            }
+        }
+        $this->_incidents = $qualifiedIncidents;
     }
 
     /**

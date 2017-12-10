@@ -13,4 +13,9 @@ class LoLStatus
 
         return($return);
     }
+
+    public static function transformJsonToShardData(array $json)
+    {
+        return sizeof($json) < 1 ? null : new ShardData($json);
+    }
 }

@@ -118,7 +118,21 @@ class ShardData
      */
     public function setServices($services)
     {
-        $this->_services = $services;
+        $qualifiedServices = [];
+        if (sizeof($services) >= 1) {
+            foreach ($services as $service) {
+                $counter = sizeof($qualifiedServices);
+                if ($service instanceof Service) {
+                    $qualifiedServices[$counter] = $service;
+                } else {
+                    $createdService = new Service($service);
+                    if ($createdService != null) {
+                       $qualifiedServices[$counter] = $createdService;
+                    }
+                }
+            }
+        }
+        $this->_services = $qualifiedServices;
     }
 
     /**

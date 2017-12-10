@@ -14,8 +14,8 @@ class Incident
         if (array_key_exists("active", $args)) {
             $this->_active = $args['active'];
         }
-        if (array_key_exists("createdAt", $args)) {
-            $this->_createdAt = $args['createdAt'];
+        if (array_key_exists("created_at", $args)) {
+            $this->_createdAt = $args['created_at'];
         }
         if (array_key_exists("id", $args)) {
             $this->_id = $args['id'];
@@ -78,7 +78,21 @@ class Incident
      */
     public function setUpdates(array $updates)
     {
-        $this->_updates = $updates;
+        $qualifiedUpdates = [];
+        if (sizeof($updates) >= 1) {
+            foreach ($updates as $update) {
+                $counter = sizeof($qualifiedUpdates);
+                if ($update instanceof Message) {
+                    $qualifiedUpdates[$counter] = $update;
+                } else {
+                    $createdUpdate = new Message($update);
+                    if ($createdUpdate != null) {
+                        $qualifiedUpdates[$counter] = $createdUpdate;
+                    }
+                }
+            }
+        }
+        $this->_updates = $qualifiedUpdates;
     }
 
     /**

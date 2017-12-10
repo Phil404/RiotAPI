@@ -18,15 +18,32 @@ class IncidentTest extends TestCase
 
         $incident = new Incident(
             ["active" => true,
-            "createdAt" => "DateA",
+            "created_at" => "DateA",
             "id" => 123,
             "updates" => [$message]]
         );
 
-        $this->assertEquals(true, $incident->getActive());
+        $this->assertTrue($incident->getActive());
         $this->assertEquals("DateA", $incident->getCreatedAt());
         $this->assertEquals(123, $incident->getId());
         $this->assertEquals([$message], $incident->getUpdates());
+    }
+
+    public function testConstructorWithMessageAsArray()
+    {
+        $incident = new Incident(
+            ["active" => true,
+            "updates" => [["author" => "Hans"]]]
+        );
+
+        $this->assertTrue($incident->getUpdates()[0] instanceof Message);
+    }
+
+    public function testConstructorWithoutMessage()
+    {
+        $incident = new Incident(["updates" => []]);
+
+        $this->assertEquals(0, sizeof($incident->getUpdates()));
     }
 
     public function testSetAndGetActive()

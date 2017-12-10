@@ -33,6 +33,22 @@ class ShardDataTest extends TestCase
         $this->assertEquals([$service], $shardData->getServices());
     }
 
+    public function testConstructorWithServicesAsArray()
+    {
+        $shardData = new ShardData(["services" => [["name" => "Foo"]]]);
+
+        $this->assertTrue($shardData->getServices()[0] instanceof Service);
+        $this->assertEquals("Foo", $shardData->getServices()[0]->getName());
+        $this->assertEquals(1, sizeof($shardData->getServices()));
+    }
+
+    public function testConstructorWithoutServices()
+    {
+        $shardData = new ShardData(["services" => []]);
+
+        $this->assertEquals(0, sizeof($shardData->getServices()));
+    }
+
     public function testSetAndGetName()
     {
         $shardData = new ShardData();
