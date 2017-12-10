@@ -41,14 +41,14 @@ class MessageTest extends TestCase
             "translations" => [["locale" => "de_DE"]]]
         );
 
+        $this->assertTrue(sizeof($message->getTranslations()) == 1);
         $this->assertTrue(
             $message->getTranslations()[0] instanceof Translation
         );
-        $this->assertTrue(sizeof($message->getTranslations()) == 1);
-        $this->assertEquals(
-            "de_DE",
-            $message->getTranslations()[0]->getLocale()
-        );
+
+        $translation = (object) $message->getTranslations()[0];
+
+        $this->assertEquals("de_DE", $translation->getLocale());
     }
 
     public function testConstructorWithEmptyTranslation()

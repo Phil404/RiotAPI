@@ -36,7 +36,12 @@ class IncidentTest extends TestCase
             "updates" => [["author" => "Hans"]]]
         );
 
+        $this->assertEquals(1, sizeof($incident->getUpdates()));
         $this->assertTrue($incident->getUpdates()[0] instanceof Message);
+
+        $update = (object) $incident->getUpdates()[0];
+
+        $this->assertEquals("Hans", $update->getAuthor());
     }
 
     public function testConstructorWithoutMessage()
