@@ -12,4 +12,23 @@ class RequestHelperTest extends TestCase
             RequestHelper::callApi() instanceof \GuzzleHttp\Psr7\Response
         );
     }
+
+    public function testGetApiKey()
+    {
+        $testFile = fopen("apiKey.txt.test", "w");
+        fwrite($testFile, "TestApiKey-123");
+        fclose($testFile);
+
+        $this->assertEquals(
+            "TestApiKey-123",
+            RequestHelper::getApiKey("apiKey.txt.test")
+        );
+
+        unlink("apiKey.txt.test");
+    }
+
+    public function testGetApiKeyWithoutFile()
+    {
+        $this->assertNull(RequestHelper::getApiKey("apiKey.txt.test"));
+    }
 }

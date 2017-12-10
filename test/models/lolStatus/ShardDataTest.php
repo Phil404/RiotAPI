@@ -114,9 +114,12 @@ class ShardDataTest extends TestCase
         $shardData->setServices([$serviceA]);
 
         $this->assertEquals([$serviceA], $shardData->getServices());
+        $this->assertTrue($shardData->getServices()[0] instanceof Service);
 
         $shardData->setServices([$serviceA, $serviceB]);
 
         $this->assertEquals([$serviceA, $serviceB], $shardData->getServices());
+        $this->assertTrue($shardData->getServices()[0] instanceof Service);
+        $this->assertTrue($shardData->getServices()[1] instanceof Service);
     }
 }

@@ -9,6 +9,7 @@ class TranslationTest extends TestCase
     {
         $translation = new Translation();
         $this->assertTrue(is_object($translation));
+        $this->assertTrue($translation instanceof Translation);
     }
 
     public function testConstructor()
