@@ -35,26 +35,35 @@ class RequestHelperTest extends TestCase
 
     public function testBuildApiQuery()
     {
-        $array = [
-            "region" => Region::EUW,
-            "route" => "lol/test/shard-data",
-            "api_key" => "Test123"
-        ];
-        $expect = "https://" . Region::EUW .
-            ".api.riotgames.com/lol/test/shard-data?api_key=Test123";
+        $expect = "https://"
+            . Region::EUW
+            . ".api.riotgames.com/lol/test/shard-data?api_key=Test123";
 
-        $this->assertEquals($expect, RequestHelper::buildApiQuery($array));
+        $query = RequestHelper::buildApiQuery(
+            Region::EUW,
+            "lol/test/shard-data",
+            ["api_key" => "Test123"]
+        );
+
+        $this->assertEquals($expect, $query);
     }
 
     public function testBuildApiQueryWithBrokenInformation()
     {
-        $arrayWithoutRegion = ["route" => "lol/test", "api_key" => "nom"];
-        $arrayWithoutRoute = ["region" => Region::EUW, "api_key" => "nom"];
-        $arrayWithoutApiKey = ["region" => Region::EUW, "route" => "lol/test"];
+        $this->assertNull(
+            RequestHelper::buildApiQuery("", "foo/bar", ["foo" => "bar"])
+        );
+        $this->assertNull(
+            RequestHelper::buildApiQuery("foo", "", ["foo" => "bar"])
+        );
+        $this->assertNull(RequestHelper::buildApiQuery("foo", "bar", []));
+    }
 
-        $this->assertNull(RequestHelper::buildApiQuery($arrayWithoutRegion));
-        $this->assertNull(RequestHelper::buildApiQuery($arrayWithoutRoute));
-        $this->assertNull(RequestHelper::buildApiQuery($arrayWithoutApiKey));
+    public function testBuildApiQueryWithoutApiKey()
+    {
+        $this->assertNull(
+            RequestHelper::buildApiQuery("foo", "bar", ["foo" => "bar"])
+        );
     }
 
     public function testConvertQueryReady()

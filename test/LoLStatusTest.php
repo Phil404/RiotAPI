@@ -3,13 +3,14 @@
 use PHPUnit\Framework\TestCase;
 use Phil404\RiotAPI\LoLStatus;
 use Phil404\RiotAPI\Models\LoLStatus\ShardData;
+use Phil404\RiotAPI\Models\Region;
 
 class LoLStatusTest extends TestCase
 {
 
     public function testGetLoLStatus()
     {
-        $response = LolStatus::getStatus();
+        $response = LolStatus::getStatus(Region::EUW);
         $this->assertTrue(
             $response instanceof ShardData
         );

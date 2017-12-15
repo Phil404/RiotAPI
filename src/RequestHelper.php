@@ -26,17 +26,20 @@ class RequestHelper
         return $keyFile;
     }
 
-    public static function buildApiQuery(array $args)
+    public static function buildApiQuery(string $region,
+                                         string $route,
+                                         array $args)
     {
-        if (array_key_exists("region", $args)
-            && array_key_exists("route", $args)
+        if (!empty($region)
+            && !empty($route)
+            && sizeof($args) >= 1
             && array_key_exists("api_key", $args)) {
             return "https://"
-                . $args['region']
+                . $region
                 . ".api.riotgames.com/"
-                . $args['route']
-                . "?api_key="
-                . $args['api_key'];
+                . $route
+                . "?"
+                . self::convertArrayQueryReady($args);
         } else {
             return null;
         }
