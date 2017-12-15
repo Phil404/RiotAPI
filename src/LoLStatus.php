@@ -3,16 +3,20 @@
 namespace Phil404\RiotAPI;
 
 use Phil404\RiotAPI\Models\LoLStatus\ShardData;
-use Phil404\RiotAPI\Models\Region;
 
 class LoLStatus
 {
+    private static $_route = "lol/status/v3/shard-data";
 
     public static function getStatus(string $region)
     {
-        $return = new ShardData();
-
-        return($return);
+        $query = RequestHelper::buildApiQuery(
+            $region,
+            LoLStatus::$_route,
+            ["api_key" => RequestHelper::getApiKey("apiKey.txt")]
+        );
+        $data = json_decode(RequestHelper::callApi($query), true);
+        return(self::transformJsonToShardData($data));
     }
 
     public static function transformJsonToShardData(array $data)

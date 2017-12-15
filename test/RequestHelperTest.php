@@ -9,8 +9,8 @@ class RequestHelperTest extends TestCase
 
     public function testCallApi()
     {
-        $this->assertTrue(
-            RequestHelper::callApi() instanceof \GuzzleHttp\Psr7\Response
+        $this->assertNull(
+            RequestHelper::callApi("test")
         );
     }
 

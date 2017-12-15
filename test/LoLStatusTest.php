@@ -14,6 +14,7 @@ class LoLStatusTest extends TestCase
         $this->assertTrue(
             $response instanceof ShardData
         );
+        $this->assertEquals("EU West", $response->getName());
     }
 
     public function testTransfromJsonToShardData()

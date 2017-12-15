@@ -2,14 +2,21 @@
 
 namespace Phil404\RiotAPI;
 
-use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
 
 class RequestHelper
 {
 
-    public static function callApi()
+    public static function callApi($query)
     {
-        return new Response();
+        $client = new Client();
+        try {
+            $response = $client->request('GET', $query)->getBody();
+        } catch(ConnectException $e) {
+            $response = null;
+        }
+        return $response;
     }
 
     /**
