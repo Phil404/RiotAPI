@@ -4,7 +4,7 @@ namespace Phil404\RiotAPI;
 
 use Phil404\RiotAPI\Models\LoLStatus\ShardData;
 
-class LoLStatus
+class LoLStatusV3
 {
     private static $_route = "lol/status/v3/shard-data";
 
@@ -12,7 +12,7 @@ class LoLStatus
     {
         $apiHandler = new ApiHandler();
         $apiHandler->setRegion($region);
-        $data = $apiHandler->sendRequest(LoLStatus::$_route);
+        $data = $apiHandler->sendRequest(LoLStatusV3::$_route);
 
         return is_null($data) ? null : self::transformJsonToShardData($data);
     }

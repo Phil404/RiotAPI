@@ -1,11 +1,11 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Phil404\RiotAPI\LoLStatus;
+use Phil404\RiotAPI\LoLStatusV3;
 use Phil404\RiotAPI\Models\LoLStatus\ShardData;
 use Phil404\RiotAPI\Models\Region;
 
-class LoLStatusTest extends TestCase
+class LoLStatusV3Test extends TestCase
 {
 
     public function testGetLoLStatus()
@@ -13,7 +13,7 @@ class LoLStatusTest extends TestCase
         if (!file_exists("apiKey.txt")) {
             $this->markTestSkipped("ApiKey not found!");
         } else {
-            $response = LolStatus::getStatus(Region::EUW);
+            $response = LoLStatusV3::getStatus(Region::EUW);
             $this->assertTrue(
                 $response instanceof ShardData
             );
@@ -23,8 +23,8 @@ class LoLStatusTest extends TestCase
 
     public function testTransfromJsonToShardData()
     {
-        $shardData = LoLStatus::transformJsonToShardData(
-            json_decode(LoLStatusTest::$_rawJson, true)
+        $shardData = LoLStatusV3::transformJsonToShardData(
+            json_decode(LoLStatusV3Test::$_rawJson, true)
         );
 
         $this->assertTrue($shardData instanceof ShardData);
@@ -34,7 +34,7 @@ class LoLStatusTest extends TestCase
 
     public function testTransformWithEmptyJson()
     {
-        $shardData = LoLStatus::transformJsonToShardData([]);
+        $shardData = LoLStatusV3::transformJsonToShardData([]);
 
         $this->assertNull($shardData);
     }
