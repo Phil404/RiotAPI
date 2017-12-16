@@ -10,12 +10,10 @@ class LoLStatus
 
     public static function getStatus(string $region)
     {
-        $query = RequestHelper::buildApiQuery(
-            $region,
-            LoLStatus::$_route,
-            ["api_key" => RequestHelper::getApiKey("apiKey.txt")]
-        );
-        $data = json_decode(RequestHelper::callApi($query), true);
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+        $data = $apiHandler->sendRequest(LoLStatus::$_route);
+
         return(self::transformJsonToShardData($data));
     }
 
