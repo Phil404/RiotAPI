@@ -14,7 +14,7 @@ class LoLStatus
         $apiHandler->setRegion($region);
         $data = $apiHandler->sendRequest(LoLStatus::$_route);
 
-        return(self::transformJsonToShardData($data));
+        return is_null($data) ? null : self::transformJsonToShardData($data);
     }
 
     public static function transformJsonToShardData(array $data)

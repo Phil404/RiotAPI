@@ -31,8 +31,10 @@ class ApiHandler
         try {
             $response = $client->request("GET", $query);
         } catch (RequestException $e) {
-            return null;
+            $response = $e->getResponse();
         }
+
+        if($response->getStatusCode() != 200) return null;
 
         return json_decode($response->getBody(), true);
     }
