@@ -10,11 +10,15 @@ class LoLStatusTest extends TestCase
 
     public function testGetLoLStatus()
     {
-        $response = LolStatus::getStatus(Region::EUW);
-        $this->assertTrue(
-            $response instanceof ShardData
-        );
-        $this->assertEquals("EU West", $response->getName());
+        if (!file_exists("apiKey.txt")) {
+            $this->markTestSkipped("ApiKey not found!");
+        } else {
+            $response = LolStatus::getStatus(Region::EUW);
+            $this->assertTrue(
+                $response instanceof ShardData
+            );
+            $this->assertEquals("EU West", $response->getName());
+        }
     }
 
     public function testTransfromJsonToShardData()
