@@ -5,6 +5,26 @@ use Phil404\RiotAPI\Models\Summoner\Summoner;
 
 class SummonerTest extends TestCase
 {
+    public function testConstructor()
+    {
+        $array = [
+            "profileIconId" => 123,
+            "name" => "Phil404",
+            "summonerLevel" => 12,
+            "revisionDate" => 123,
+            "id" => 123,
+            "accountId" => 123
+        ];
+        $summoner = new Summoner($array);
+
+        $this->assertEquals(123, $summoner->getProfileIconId());
+        $this->assertEquals("Phil404", $summoner->getName());
+        $this->assertEquals(12, $summoner->getSummonerLevel());
+        $this->assertEquals(123, $summoner->getRevisionDate());
+        $this->assertEquals(123, $summoner->getId());
+        $this->assertEquals(123, $summoner->getAccountId());
+    }
+
     public function testSetAndGetProfilIconId()
     {
         $summoner = new Summoner();

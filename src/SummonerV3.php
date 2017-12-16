@@ -14,10 +14,6 @@ class SummonerV3
         $apiHandler->setRegion($region);
         $response = $apiHandler->sendRequest(SummonerV3::$_route."/".$id);
 
-        if (is_null($response)) return null;
-
-        $summoner = new Summoner();
-        $summoner->setName($response['name']);
-        return $summoner;
+        return is_null($response) ? null : new Summoner($response);
     }
 }
