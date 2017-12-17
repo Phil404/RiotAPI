@@ -9,7 +9,7 @@ class IncidentTest extends TestCase
     public function testIncident()
     {
         $incident = new Incident();
-        $this->assertTrue(is_object($incident));
+        self::assertTrue(is_object($incident));
     }
 
     public function testConstructor()
@@ -23,10 +23,10 @@ class IncidentTest extends TestCase
             "updates" => [$message]]
         );
 
-        $this->assertTrue($incident->getActive());
-        $this->assertEquals("DateA", $incident->getCreatedAt());
-        $this->assertEquals(123, $incident->getId());
-        $this->assertEquals([$message], $incident->getUpdates());
+        self::assertTrue($incident->getActive());
+        self::assertEquals("DateA", $incident->getCreatedAt());
+        self::assertEquals(123, $incident->getId());
+        self::assertEquals([$message], $incident->getUpdates());
     }
 
     public function testConstructorWithMessageAsArray()
@@ -36,19 +36,19 @@ class IncidentTest extends TestCase
             "updates" => [["author" => "Hans"]]]
         );
 
-        $this->assertEquals(1, sizeof($incident->getUpdates()));
-        $this->assertTrue($incident->getUpdates()[0] instanceof Message);
+        self::assertEquals(1, sizeof($incident->getUpdates()));
+        self::assertTrue($incident->getUpdates()[0] instanceof Message);
 
         $update = (object) $incident->getUpdates()[0];
 
-        $this->assertEquals("Hans", $update->getAuthor());
+        self::assertEquals("Hans", $update->getAuthor());
     }
 
     public function testConstructorWithoutMessage()
     {
         $incident = new Incident(["updates" => []]);
 
-        $this->assertEquals(0, sizeof($incident->getUpdates()));
+        self::assertEquals(0, sizeof($incident->getUpdates()));
     }
 
     public function testSetAndGetActive()
@@ -56,11 +56,11 @@ class IncidentTest extends TestCase
         $incident = new Incident();
         $incident->setActive(true);
 
-        $this->assertTrue($incident->getActive());
+        self::assertTrue($incident->getActive());
 
         $incident->setActive(false);
 
-        $this->assertFalse($incident->getActive());
+        self::assertFalse($incident->getActive());
     }
 
     public function testSetAndGetCreatedAt()
@@ -68,11 +68,11 @@ class IncidentTest extends TestCase
         $incident = new Incident();
         $incident->setCreatedAt("DateA");
 
-        $this->assertEquals("DateA", $incident->getCreatedAt());
+        self::assertEquals("DateA", $incident->getCreatedAt());
 
         $incident->setCreatedAt("DateB");
 
-        $this->assertEquals("DateB", $incident->getCreatedAt());
+        self::assertEquals("DateB", $incident->getCreatedAt());
     }
 
     public function testSetAndGetId()
@@ -80,11 +80,11 @@ class IncidentTest extends TestCase
         $incident = new Incident();
         $incident->setId(123);
 
-        $this->assertEquals(123, $incident->getId());
+        self::assertEquals(123, $incident->getId());
 
         $incident->setId(789);
 
-        $this->assertEquals(789, $incident->getId());
+        self::assertEquals(789, $incident->getId());
     }
 
     public function testSetAndGetUpdates()
@@ -95,10 +95,10 @@ class IncidentTest extends TestCase
         $incident = new Incident();
         $incident->setUpdates([$messageA]);
 
-        $this->assertEquals([$messageA], $incident->getUpdates());
+        self::assertEquals([$messageA], $incident->getUpdates());
 
         $incident->setUpdates([$messageA, $messageB]);
 
-        $this->assertEquals([$messageA, $messageB], $incident->getUpdates());
+        self::assertEquals([$messageA, $messageB], $incident->getUpdates());
     }
 }

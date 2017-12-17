@@ -17,12 +17,12 @@ class SummonerTest extends TestCase
         ];
         $summoner = new Summoner($array);
 
-        $this->assertEquals(123, $summoner->getProfileIconId());
-        $this->assertEquals("Phil404", $summoner->getName());
-        $this->assertEquals(12, $summoner->getSummonerLevel());
-        $this->assertEquals(123, $summoner->getRevisionDate());
-        $this->assertEquals(123, $summoner->getId());
-        $this->assertEquals(123, $summoner->getAccountId());
+        self::assertEquals(123, $summoner->getProfileIconId());
+        self::assertEquals("Phil404", $summoner->getName());
+        self::assertEquals(12, $summoner->getSummonerLevel());
+        self::assertEquals(123, $summoner->getRevisionDate());
+        self::assertEquals(123, $summoner->getId());
+        self::assertEquals(123, $summoner->getAccountId());
     }
 
     public function testSetAndGetProfilIconId()
@@ -30,11 +30,11 @@ class SummonerTest extends TestCase
         $summoner = new Summoner();
         $summoner->setProfileIconId(123);
 
-        $this->assertEquals(123, $summoner->getProfileIconId());
+        self::assertEquals(123, $summoner->getProfileIconId());
 
         $summoner->setProfileIconId(789);
 
-        $this->assertEquals(789, $summoner->getProfileIconId());
+        self::assertEquals(789, $summoner->getProfileIconId());
     }
 
     public function testSetAndGetName()
@@ -42,11 +42,11 @@ class SummonerTest extends TestCase
         $summoner = new Summoner();
         $summoner->setName("Phil404");
 
-        $this->assertEquals("Phil404", $summoner->getName());
+        self::assertEquals("Phil404", $summoner->getName());
 
         $summoner->setName("HansSama");
 
-        $this->assertEquals("HansSama", $summoner->getName());
+        self::assertEquals("HansSama", $summoner->getName());
     }
 
     public function testSetAndGetSummonerLevel()
@@ -54,11 +54,11 @@ class SummonerTest extends TestCase
         $summoner = new Summoner();
         $summoner->setSummonerLevel(12);
 
-        $this->assertEquals(12, $summoner->getSummonerLevel());
+        self::assertEquals(12, $summoner->getSummonerLevel());
 
         $summoner->setSummonerLevel(24);
 
-        $this->assertEquals(24, $summoner->getSummonerLevel());
+        self::assertEquals(24, $summoner->getSummonerLevel());
     }
 
     public function testSetAndGetRevisionDate()
@@ -66,11 +66,11 @@ class SummonerTest extends TestCase
         $summoner = new Summoner();
         $summoner->setRevisionDate(123);
 
-        $this->assertEquals(123, $summoner->getRevisionDate());
+        self::assertEquals(123, $summoner->getRevisionDate());
 
         $summoner->setRevisionDate(789);
 
-        $this->assertEquals(789, $summoner->getRevisionDate());
+        self::assertEquals(789, $summoner->getRevisionDate());
     }
 
     public function testSetAndGetId()
@@ -78,11 +78,11 @@ class SummonerTest extends TestCase
         $summoner = new Summoner();
         $summoner->setId(123);
 
-        $this->assertEquals(123, $summoner->getId());
+        self::assertEquals(123, $summoner->getId());
 
         $summoner->setId(789);
 
-        $this->assertEquals(789, $summoner->getId());
+        self::assertEquals(789, $summoner->getId());
     }
 
     public function testSetAndGetAccountId()
@@ -90,10 +90,10 @@ class SummonerTest extends TestCase
         $summoner = new Summoner();
         $summoner->setAccountId(123);
 
-        $this->assertEquals(123, $summoner->getAccountId());
+        self::assertEquals(123, $summoner->getAccountId());
 
         $summoner->setAccountId(789);
 
-        $this->assertEquals(789, $summoner->getAccountId());
+        self::assertEquals(789, $summoner->getAccountId());
     }
 }

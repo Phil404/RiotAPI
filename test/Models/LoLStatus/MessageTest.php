@@ -9,7 +9,7 @@ class MessageTest extends TestCase
     public function testMessage()
     {
         $message = new Message();
-        $this->assertTrue(is_object($message));
+        self::assertTrue(is_object($message));
     }
 
     public function testConstructor()
@@ -25,13 +25,13 @@ class MessageTest extends TestCase
             "translations" => [$translation]]
         );
 
-        $this->assertEquals("foo", $message->getSeverity());
-        $this->assertEquals("bar", $message->getAuthor());
-        $this->assertEquals("DateA", $message->getCreatedAt());
-        $this->assertEquals("DateA", $message->getUpdatedAt());
-        $this->assertEquals("foo", $message->getContent());
-        $this->assertEquals(123, $message->getId());
-        $this->assertEquals([$translation], $message->getTranslations());
+        self::assertEquals("foo", $message->getSeverity());
+        self::assertEquals("bar", $message->getAuthor());
+        self::assertEquals("DateA", $message->getCreatedAt());
+        self::assertEquals("DateA", $message->getUpdatedAt());
+        self::assertEquals("foo", $message->getContent());
+        self::assertEquals(123, $message->getId());
+        self::assertEquals([$translation], $message->getTranslations());
     }
 
     public function testConstructorWithTranslationAsArray()
@@ -41,21 +41,21 @@ class MessageTest extends TestCase
             "translations" => [["locale" => "de_DE"]]]
         );
 
-        $this->assertTrue(sizeof($message->getTranslations()) == 1);
-        $this->assertTrue(
+        self::assertTrue(sizeof($message->getTranslations()) == 1);
+        self::assertTrue(
             $message->getTranslations()[0] instanceof Translation
         );
 
         $translation = (object) $message->getTranslations()[0];
 
-        $this->assertEquals("de_DE", $translation->getLocale());
+        self::assertEquals("de_DE", $translation->getLocale());
     }
 
     public function testConstructorWithEmptyTranslation()
     {
         $message = new Message(["translations" => []]);
 
-        $this->assertTrue(sizeof($message->getTranslations()) == 0);
+        self::assertTrue(sizeof($message->getTranslations()) == 0);
     }
 
     public function testSetAndGetSeverity()
@@ -63,11 +63,11 @@ class MessageTest extends TestCase
         $message = new Message();
         $message->setSeverity("foo");
 
-        $this->assertEquals("foo", $message->getSeverity());
+        self::assertEquals("foo", $message->getSeverity());
 
         $message->setSeverity("bar");
 
-        $this->assertEquals("bar", $message->getSeverity());
+        self::assertEquals("bar", $message->getSeverity());
     }
 
     public function testSetAndGetAuthor()
@@ -75,11 +75,11 @@ class MessageTest extends TestCase
         $message = new Message();
         $message->setAuthor("foo");
 
-        $this->assertEquals("foo", $message->getAuthor());
+        self::assertEquals("foo", $message->getAuthor());
 
         $message->setAuthor("bar");
 
-        $this->assertEquals("bar", $message->getAuthor());
+        self::assertEquals("bar", $message->getAuthor());
     }
 
     public function testSetAndGetCreatedAt()
@@ -87,11 +87,11 @@ class MessageTest extends TestCase
         $message = new Message();
         $message->setCreatedAt("DateA");
 
-        $this->assertEquals("DateA", $message->getCreatedAt());
+        self::assertEquals("DateA", $message->getCreatedAt());
 
         $message->setCreatedAt("DateB");
 
-        $this->assertEquals("DateB", $message->getCreatedAt());
+        self::assertEquals("DateB", $message->getCreatedAt());
     }
 
     public function testSetAndGetUpdatedAt()
@@ -99,11 +99,11 @@ class MessageTest extends TestCase
         $message = new Message();
         $message->setUpdatedAt("DateA");
 
-        $this->assertEquals("DateA", $message->getUpdatedAt());
+        self::assertEquals("DateA", $message->getUpdatedAt());
 
         $message->setUpdatedAt("DateB");
 
-        $this->assertEquals("DateB", $message->getUpdatedAt());
+        self::assertEquals("DateB", $message->getUpdatedAt());
     }
 
     public function testSetAndGetContent()
@@ -111,11 +111,11 @@ class MessageTest extends TestCase
         $message = new Message();
         $message->setContent("foo");
 
-        $this->assertEquals("foo", $message->getContent());
+        self::assertEquals("foo", $message->getContent());
 
         $message->setContent("bar");
 
-        $this->assertEquals("bar", $message->getContent());
+        self::assertEquals("bar", $message->getContent());
     }
 
     public function testSetAndGetId()
@@ -123,11 +123,11 @@ class MessageTest extends TestCase
         $message = new Message();
         $message->setId(123);
 
-        $this->assertEquals(123, $message->getId());
+        self::assertEquals(123, $message->getId());
 
         $message->setId(789);
 
-        $this->assertEquals(789, $message->getId());
+        self::assertEquals(789, $message->getId());
     }
 
     public function testSetAndGetTranslations()
@@ -138,11 +138,11 @@ class MessageTest extends TestCase
         $message = new Message();
         $message->setTranslations([$translationA]);
 
-        $this->assertEquals([$translationA], $message->getTranslations());
+        self::assertEquals([$translationA], $message->getTranslations());
 
         $message->setTranslations([$translationA, $translationB]);
 
-        $this->assertEquals(
+        self::assertEquals(
             [$translationA, $translationB],
             $message->getTranslations()
         );

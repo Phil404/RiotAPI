@@ -8,8 +8,8 @@ class ServiceTest extends TestCase
 {
     public function testService()
     {
-        $service = new Service;
-        $this->assertTrue(is_object($service));
+        $service = new Service();
+        self::assertTrue(is_object($service));
     }
 
     public function testConstructor()
@@ -23,10 +23,10 @@ class ServiceTest extends TestCase
             "incidents" => [$incident]]
         );
 
-        $this->assertEquals("online", $service->getStatus());
-        $this->assertEquals("Store", $service->getName());
-        $this->assertEquals("store", $service->getSlug());
-        $this->assertEquals([$incident], $service->getIncidents());
+        self::assertEquals("online", $service->getStatus());
+        self::assertEquals("Store", $service->getName());
+        self::assertEquals("store", $service->getSlug());
+        self::assertEquals([$incident], $service->getIncidents());
     }
 
     public function testConstructorWithIncidentsAsArray()
@@ -36,19 +36,19 @@ class ServiceTest extends TestCase
             "incidents" => [["id" => 123]]]
         );
 
-        $this->assertEquals(1, sizeof($service->getIncidents()));
-        $this->assertTrue($service->getIncidents()[0] instanceof Incident);
+        self::assertEquals(1, sizeof($service->getIncidents()));
+        self::assertTrue($service->getIncidents()[0] instanceof Incident);
 
         $incident = (object) $service->getIncidents()[0];
 
-        $this->assertEquals(123, $incident->getId());
+        self::assertEquals(123, $incident->getId());
     }
 
     public function testConstructorWithoutIncidents()
     {
         $service = new Service(["incidents" => []]);
 
-        $this->assertEquals(0, sizeof($service->getIncidents()));
+        self::assertEquals(0, sizeof($service->getIncidents()));
     }
 
     public function testSetAndGetStatus()
@@ -56,11 +56,11 @@ class ServiceTest extends TestCase
         $service = new Service();
         $service->setStatus("Running");
 
-        $this->assertEquals("Running", $service->getStatus());
+        self::assertEquals("Running", $service->getStatus());
 
         $service->setStatus("Offline");
 
-        $this->assertEquals("Offline", $service->getStatus());
+        self::assertEquals("Offline", $service->getStatus());
     }
 
     public function testSetAndGetName()
@@ -68,11 +68,11 @@ class ServiceTest extends TestCase
         $service = new Service();
         $service->setName("Game");
 
-        $this->assertEquals("Game", $service->getName());
+        self::assertEquals("Game", $service->getName());
 
         $service->setName("Store");
 
-        $this->assertEquals("Store", $service->getName());
+        self::assertEquals("Store", $service->getName());
     }
 
     public function testSetAndGetSlug()
@@ -80,11 +80,11 @@ class ServiceTest extends TestCase
         $service = new Service();
         $service->setSlug("game");
 
-        $this->assertEquals("game", $service->getSlug());
+        self::assertEquals("game", $service->getSlug());
 
         $service->setSlug("store");
 
-        $this->assertEquals("store", $service->getSlug());
+        self::assertEquals("store", $service->getSlug());
     }
 
     public function testSetAndGetIncidents()
@@ -95,10 +95,10 @@ class ServiceTest extends TestCase
         $service = new Service();
         $service->setIncidents([$incidentA]);
 
-        $this->assertEquals([$incidentA], $service->getIncidents());
+        self::assertEquals([$incidentA], $service->getIncidents());
 
         $service->setIncidents([$incidentA, $incidentB]);
 
-        $this->assertEquals([$incidentA, $incidentB], $service->getIncidents());
+        self::assertEquals([$incidentA, $incidentB], $service->getIncidents());
     }
 }

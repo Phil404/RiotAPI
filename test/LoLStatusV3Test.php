@@ -11,13 +11,13 @@ class LoLStatusV3Test extends TestCase
     public function testGetLoLStatus()
     {
         if (!file_exists("apiKey.txt")) {
-            $this->markTestSkipped("ApiKey not found!");
+            self::markTestSkipped("ApiKey not found!");
         } else {
             $response = LoLStatusV3::getStatus(Region::EUW);
-            $this->assertTrue(
+            self::assertTrue(
                 $response instanceof ShardData
             );
-            $this->assertEquals("EU West", $response->getName());
+            self::assertEquals("EU West", $response->getName());
         }
     }
 
@@ -27,16 +27,16 @@ class LoLStatusV3Test extends TestCase
             json_decode(LoLStatusV3Test::$_rawJson, true)
         );
 
-        $this->assertTrue($shardData instanceof ShardData);
-        $this->assertEquals("EU West", $shardData->getName());
-        $this->assertEquals(4, sizeof($shardData->getServices()));
+        self::assertTrue($shardData instanceof ShardData);
+        self::assertEquals("EU West", $shardData->getName());
+        self::assertEquals(4, sizeof($shardData->getServices()));
     }
 
     public function testTransformWithEmptyJson()
     {
         $shardData = LoLStatusV3::transformJsonToShardData([]);
 
-        $this->assertNull($shardData);
+        self::assertNull($shardData);
     }
 
     private static $_rawJson = '{

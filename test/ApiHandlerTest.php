@@ -11,42 +11,42 @@ class ApiHandlerTest extends TestCase
 
     public function testGetApiKey()
     {
-        $apiHandler = $this->createApiHandlerTestCase();
+        $apiHandler = self::createApiHandlerTestCase();
 
-        $this->assertEquals($this->_apiKey, $apiHandler->getApiKey());
+        self::assertEquals($this->_apiKey, $apiHandler->getApiKey());
 
-        $this->deleteFileForTestCase();
+        self::deleteFileForTestCase();
     }
 
     public function testGetApiKeyWithoutFile()
     {
         $apiHandler = new ApiHandler("apikey.txt.test");
 
-        $this->assertNull($apiHandler->getApiKey());
+        self::assertNull($apiHandler->getApiKey());
     }
 
     public function testSetAndGetRegion()
     {
-        $apiHandler = $this->createApiHandlerTestCase();
+        $apiHandler = self::createApiHandlerTestCase();
         $apiHandler->setRegion(Region::EUW);
 
-        $this->assertEquals(Region::EUW, $apiHandler->getRegion());
+        self::assertEquals(Region::EUW, $apiHandler->getRegion());
 
         $apiHandler->setRegion(Region::BR);
 
-        $this->assertEquals(Region::BR, $apiHandler->getRegion());
+        self::assertEquals(Region::BR, $apiHandler->getRegion());
     }
 
     public function testBuildQuery()
     {
-        $apiHandler = $this->createApiHandlerTestCase();
+        $apiHandler = self::createApiHandlerTestCase();
         $apiHandler->setRegion(Region::EUW);
         $expectedURL = "https://"
             . Region::EUW
             . ".api.riotgames.com/foo/bar?foo=bar&api_key="
             . $this->_apiKey;
 
-        $this->assertEquals(
+        self::assertEquals(
             $expectedURL,
             $apiHandler->createQuery(
                 "foo/bar",
@@ -57,29 +57,29 @@ class ApiHandlerTest extends TestCase
             )
         );
 
-        $this->deleteFileForTestCase();
+        self::deleteFileForTestCase();
     }
 
     public function testBuildQueryWithoutArray()
     {
-        $apiHandler = $this->createApiHandlerTestCase();
+        $apiHandler = self::createApiHandlerTestCase();
         $apiHandler->setRegion(Region::EUW);
 
-        $this->assertNull($apiHandler->createQuery("foo/bar"));
+        self::assertNull($apiHandler->createQuery("foo/bar"));
 
-        $this->deleteFileForTestCase();
+        self::deleteFileForTestCase();
     }
 
     public function testSendRequest()
     {
-        $apiHandler = $this->createApiHandlerTestCase();
+        $apiHandler = self::createApiHandlerTestCase();
         $apiHandler->setRegion(Region::EUW);
 
-        $this->assertNull(
+        self::assertNull(
             $apiHandler->sendRequest("foo/bar", ["foo" => "bar"])
         );
 
-        $this->deleteFileForTestCase();
+        self::deleteFileForTestCase();
     }
 
     /* --- Helper Functions --- */

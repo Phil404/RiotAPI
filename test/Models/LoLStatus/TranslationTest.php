@@ -8,8 +8,8 @@ class TranslationTest extends TestCase
     public function testTranslation()
     {
         $translation = new Translation();
-        $this->assertTrue(is_object($translation));
-        $this->assertTrue($translation instanceof Translation);
+        self::assertTrue(is_object($translation));
+        self::assertTrue($translation instanceof Translation);
     }
 
     public function testConstructor()
@@ -17,9 +17,9 @@ class TranslationTest extends TestCase
         $translation = new Translation(
             ["locale" => "de_DE", "content" => "foo", "updated_at" => "DateA"]
         );
-        $this->assertEquals("de_DE", $translation->getLocale());
-        $this->assertEquals("foo", $translation->getContent());
-        $this->assertEquals("DateA", $translation->getUpdatedAt());
+        self::assertEquals("de_DE", $translation->getLocale());
+        self::assertEquals("foo", $translation->getContent());
+        self::assertEquals("DateA", $translation->getUpdatedAt());
     }
 
     public function testSetAndGetLocale()
@@ -27,11 +27,11 @@ class TranslationTest extends TestCase
         $translation = new Translation();
         $translation->setLocale("de_DE");
 
-        $this->assertEquals("de_DE", $translation->getLocale());
+        self::assertEquals("de_DE", $translation->getLocale());
 
         $translation->setLocale("en_EN");
 
-        $this->assertEquals("en_EN", $translation->getLocale());
+        self::assertEquals("en_EN", $translation->getLocale());
     }
 
     public function testSetAndGetContent()
@@ -39,11 +39,11 @@ class TranslationTest extends TestCase
         $translation = new Translation();
         $translation->setContent("foo");
 
-        $this->assertEquals("foo", $translation->getContent());
+        self::assertEquals("foo", $translation->getContent());
 
         $translation->setContent("bar");
 
-        $this->assertEquals("bar", $translation->getContent());
+        self::assertEquals("bar", $translation->getContent());
     }
 
     public function testSetAndGetUpdatedAt()
@@ -51,10 +51,10 @@ class TranslationTest extends TestCase
         $translation = new Translation();
         $translation->setUpdatedAt("DateA");
 
-        $this->assertEquals("DateA", $translation->getUpdatedAt());
+        self::assertEquals("DateA", $translation->getUpdatedAt());
 
         $translation->setUpdatedAt("DateB");
 
-        $this->assertEquals("DateB", $translation->getUpdatedAt());
+        self::assertEquals("DateB", $translation->getUpdatedAt());
     }
 }

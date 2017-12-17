@@ -9,7 +9,7 @@ class ShardDataTest extends TestCase
     public function testShardData()
     {
         $shardData = new ShardData();
-        $this->assertTrue(is_object($shardData));
+        self::assertTrue(is_object($shardData));
     }
 
     public function testConstructor()
@@ -25,30 +25,30 @@ class ShardDataTest extends TestCase
             "services" => [$service]]
         );
 
-        $this->assertEquals("EU West", $shardData->getName());
-        $this->assertEquals("euw", $shardData->getRegionTag());
-        $this->assertEquals("foo.bar", $shardData->getHostname());
-        $this->assertEquals("eu", $shardData->getSlug());
-        $this->assertEquals(["foo", "bar"], $shardData->getLocales());
-        $this->assertEquals([$service], $shardData->getServices());
+        self::assertEquals("EU West", $shardData->getName());
+        self::assertEquals("euw", $shardData->getRegionTag());
+        self::assertEquals("foo.bar", $shardData->getHostname());
+        self::assertEquals("eu", $shardData->getSlug());
+        self::assertEquals(["foo", "bar"], $shardData->getLocales());
+        self::assertEquals([$service], $shardData->getServices());
     }
 
     public function testConstructorWithServicesAsArray()
     {
         $shardData = new ShardData(["services" => [["name" => "Foo"]]]);
 
-        $this->assertEquals(1, sizeof($shardData->getServices()));
-        $this->assertTrue($shardData->getServices()[0] instanceof Service);
+        self::assertEquals(1, sizeof($shardData->getServices()));
+        self::assertTrue($shardData->getServices()[0] instanceof Service);
 
         $service = (object) $shardData->getServices()[0];
-        $this->assertEquals("Foo", $service->getName());
+        self::assertEquals("Foo", $service->getName());
     }
 
     public function testConstructorWithoutServices()
     {
         $shardData = new ShardData(["services" => []]);
 
-        $this->assertEquals(0, sizeof($shardData->getServices()));
+        self::assertEquals(0, sizeof($shardData->getServices()));
     }
 
     public function testSetAndGetName()
@@ -56,11 +56,11 @@ class ShardDataTest extends TestCase
         $shardData = new ShardData();
         $shardData->setName("EU West");
 
-        $this->assertEquals("EU West", $shardData->getName());
+        self::assertEquals("EU West", $shardData->getName());
 
         $shardData->setName("NA");
 
-        $this->assertEquals("NA", $shardData->getName());
+        self::assertEquals("NA", $shardData->getName());
     }
 
     public function testSetAndGetRegionTag()
@@ -68,11 +68,11 @@ class ShardDataTest extends TestCase
         $shardData = new ShardData();
         $shardData->setRegionTag("eu");
 
-        $this->assertEquals("eu", $shardData->getRegionTag());
+        self::assertEquals("eu", $shardData->getRegionTag());
 
         $shardData->setRegionTag("na");
 
-        $this->assertEquals("na", $shardData->getRegionTag());
+        self::assertEquals("na", $shardData->getRegionTag());
     }
 
     public function testSetAndGetHostname()
@@ -80,14 +80,14 @@ class ShardDataTest extends TestCase
         $shardData = new ShardData();
         $shardData->setHostname("prod.euw1.lol.riotgames.com");
 
-        $this->assertEquals(
+        self::assertEquals(
             "prod.euw1.lol.riotgames.com",
             $shardData->getHostname()
         );
 
         $shardData->setHostname("prod.na.lol.riotgames.com");
 
-        $this->assertEquals(
+        self::assertEquals(
             "prod.na.lol.riotgames.com",
             $shardData->getHostname()
         );
@@ -98,11 +98,11 @@ class ShardDataTest extends TestCase
         $shardData = new ShardData();
         $shardData->setSlug("euw");
 
-        $this->assertEquals("euw", $shardData->getSlug());
+        self::assertEquals("euw", $shardData->getSlug());
 
         $shardData->setSlug("na");
 
-        $this->assertEquals("na", $shardData->getSlug());
+        self::assertEquals("na", $shardData->getSlug());
     }
 
     public function testSetAndGetLocales()
@@ -111,16 +111,16 @@ class ShardDataTest extends TestCase
         $shardData->setLocales(["de_DE", "en_EN"]);
 
         $response = $shardData->getLocales();
-        $this->assertEquals(["de_DE", "en_EN"], $response);
-        $this->assertTrue(is_array($response));
-        $this->assertTrue(sizeof($response) == 2);
+        self::assertEquals(["de_DE", "en_EN"], $response);
+        self::assertTrue(is_array($response));
+        self::assertTrue(sizeof($response) == 2);
 
         $shardData->setLocales(["en_EN", "de_DE", "random"]);
 
         $response = $shardData->getLocales();
-        $this->assertEquals(["en_EN", "de_DE", "random"], $response);
-        $this->assertTrue(is_array($response));
-        $this->assertTrue(sizeof($response) == 3);
+        self::assertEquals(["en_EN", "de_DE", "random"], $response);
+        self::assertTrue(is_array($response));
+        self::assertTrue(sizeof($response) == 3);
     }
 
     public function testSetAndGetServices()
@@ -131,13 +131,13 @@ class ShardDataTest extends TestCase
         $shardData = new ShardData();
         $shardData->setServices([$serviceA]);
 
-        $this->assertEquals([$serviceA], $shardData->getServices());
-        $this->assertTrue($shardData->getServices()[0] instanceof Service);
+        self::assertEquals([$serviceA], $shardData->getServices());
+        self::assertTrue($shardData->getServices()[0] instanceof Service);
 
         $shardData->setServices([$serviceA, $serviceB]);
 
-        $this->assertEquals([$serviceA, $serviceB], $shardData->getServices());
-        $this->assertTrue($shardData->getServices()[0] instanceof Service);
-        $this->assertTrue($shardData->getServices()[1] instanceof Service);
+        self::assertEquals([$serviceA, $serviceB], $shardData->getServices());
+        self::assertTrue($shardData->getServices()[0] instanceof Service);
+        self::assertTrue($shardData->getServices()[1] instanceof Service);
     }
 }
