@@ -16,4 +16,15 @@ class SummonerV3
 
         return is_null($response) ? null : new Summoner($response);
     }
+
+    public static function getSummonerByAccountId(string $region, int $id)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+        $response = $apiHandler->sendRequest(
+            SummonerV3::$_route."/by-account/".$id
+        );
+
+        return is_null($response) ? null : new Summoner($response);
+    }
 }

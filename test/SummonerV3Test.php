@@ -20,4 +20,21 @@ class SummonerV3Test extends TestCase
             $this->assertEquals("Phil404", $response->getName());
         }
     }
+
+    public function testGetSummonerByAccountId()
+    {
+        $accountId = 29753022;
+
+        if (!file_exists("apikey.txt")) {
+            $this->markTestSkipped("ApiKey not found!");
+        } else {
+            $response = SummonerV3::getSummonerByAccountId(
+                Region::EUW,
+                $accountId
+            );
+
+            $this->assertTrue($response instanceof Summoner);
+            $this->assertEquals("Phil404", $response->getName());
+        }
+    }
 }
