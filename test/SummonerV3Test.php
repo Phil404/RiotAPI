@@ -37,4 +37,16 @@ class SummonerV3Test extends TestCase
             $this->assertEquals("Phil404", $response->getName());
         }
     }
+
+    public function testGetSummonerByName()
+    {
+        if (!file_exists("apiKey.txt")) {
+           $this->markTestSkipped("ApiKey not found!");
+        } else {
+            $response = SummonerV3::getSummonerByName(Region::EUW, "Phil404");
+
+            $this->assertTrue($response instanceof Summoner);
+            $this->assertEquals("Phil404", $response->getName());
+        }
+    }
 }

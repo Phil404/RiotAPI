@@ -27,4 +27,15 @@ class SummonerV3
 
         return is_null($response) ? null : new Summoner($response);
     }
+
+    public static function getSummonerByName(string $region, string $name)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+        $response = $apiHandler->sendRequest(
+            SummonerV3::$_route."/by-name/".$name
+        );
+
+        return is_null($response) ? null : new Summoner($response);
+    }
 }
