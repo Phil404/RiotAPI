@@ -39,7 +39,7 @@ class ApiHandler
         return json_decode($response->getBody(), true);
     }
 
-    public function createQuery(string $route, array $array = [])
+    private function createQuery(string $route, array $array = [])
     {
         if (sizeof($array) == 0) return null;
         $parameters = "";

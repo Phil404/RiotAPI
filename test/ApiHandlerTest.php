@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use Phil404\RiotAPI\ApiHandler;
 use Phil404\RiotAPI\Models\Region;
+use Phil404\RiotAPI\Tests\Helper;
 
 class ApiHandlerTest extends TestCase
 {
@@ -46,16 +47,9 @@ class ApiHandlerTest extends TestCase
             . ".api.riotgames.com/foo/bar?foo=bar&api_key="
             . $this->_apiKey;
 
-        self::assertEquals(
-            $expectedURL,
-            $apiHandler->createQuery(
-                "foo/bar",
-                [
-                    "foo" => "bar",
-                    "api_key" => $this->_apiKey
-                ]
-            )
-        );
+        $resultOfCreateQuery = Helper::invokePrivateMethod($apiHandler, 'createQuery', ["foo/bar", ["foo" => "bar", "api_key" => $this->_apiKey]]);
+
+        self::assertEquals($expectedURL, $resultOfCreateQuery);
 
         self::deleteFileForTestCase();
     }
@@ -65,7 +59,9 @@ class ApiHandlerTest extends TestCase
         $apiHandler = self::createApiHandlerTestCase();
         $apiHandler->setRegion(Region::EUW);
 
-        self::assertNull($apiHandler->createQuery("foo/bar"));
+        $result = Helper::invokePrivateMethod($apiHandler, 'createQuery', ["foo/bar"]);
+
+        self::assertNull($result);
 
         self::deleteFileForTestCase();
     }
