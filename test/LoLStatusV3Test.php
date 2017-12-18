@@ -1,5 +1,7 @@
 <?php
 
+namespace Phil404\RiotAPI\Tests;
+
 use PHPUnit\Framework\TestCase;
 use Phil404\RiotAPI\LoLStatusV3;
 use Phil404\RiotAPI\Models\LoLStatus\ShardData;
@@ -23,8 +25,11 @@ class LoLStatusV3Test extends TestCase
 
     public function testTransfromJsonToShardData()
     {
-        $shardData = LoLStatusV3::transformJsonToShardData(
-            json_decode(LoLStatusV3Test::$_rawJson, true)
+        $lolStatus = new LoLStatusV3();
+        $shardData = Helper::invokePrivateMethod(
+            $lolStatus,
+            'transformJsonToShardData',
+            [json_decode(LoLStatusV3Test::$_rawJson, true)]
         );
 
         self::assertTrue($shardData instanceof ShardData);
@@ -34,8 +39,12 @@ class LoLStatusV3Test extends TestCase
 
     public function testTransformWithEmptyJson()
     {
-        $shardData = LoLStatusV3::transformJsonToShardData([]);
-
+        $lolStatus = new LoLStatusV3();
+        $shardData = Helper::invokePrivateMethod(
+            $lolStatus,
+            'transformJsonToShardData',
+            [[]]
+        );
         self::assertNull($shardData);
     }
 

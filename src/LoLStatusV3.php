@@ -17,7 +17,7 @@ class LoLStatusV3
         return is_null($data) ? null : self::transformJsonToShardData($data);
     }
 
-    public static function transformJsonToShardData(array $data)
+    private static function transformJsonToShardData(array $data)
     {
         return sizeof($data) <= 0 ? null : new ShardData($data);
     }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Phil404\RiotAPI\Tests\Models;
+
 use PHPUnit\Framework\TestCase;
 use Phil404\RiotAPI\Models\Region;
 

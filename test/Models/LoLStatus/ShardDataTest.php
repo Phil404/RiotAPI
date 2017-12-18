@@ -1,5 +1,7 @@
 <?php
 
+namespace Phil404\RiotAPI\Tests\Models\LoLStatus;
+
 use PHPUnit\Framework\TestCase;
 use Phil404\RiotAPI\Models\LoLStatus\ShardData;
 use Phil404\RiotAPI\Models\LoLStatus\Service;

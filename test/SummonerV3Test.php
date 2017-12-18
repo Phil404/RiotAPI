@@ -1,5 +1,7 @@
 <?php
 
+namespace Phil404\RiotAPI\Tests;
+
 use PHPUnit\Framework\TestCase;
 use Phil404\RiotAPI\Models\Region;
 use Phil404\RiotAPI\SummonerV3;
