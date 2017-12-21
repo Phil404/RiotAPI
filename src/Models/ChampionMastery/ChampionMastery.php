@@ -2,8 +2,8 @@
 
 namespace Phil404\RiotAPI\Models\ChampionMastery;
 
-class ChampionMastery{
-
+class ChampionMastery
+{
     private $_chestGranted;
     private $_championLevel;
     private $_championPoints;
@@ -96,7 +96,8 @@ class ChampionMastery{
     /**
      * @param int $championPointsUntilNextLevel
      */
-    public function setChampionPointsUntilNextLevel(int $championPointsUntilNextLevel)
+    public function setChampionPointsUntilNextLevel(
+        int $championPointsUntilNextLevel)
     {
         $this->_championPointsUntilNextLevel = $championPointsUntilNextLevel;
     }
@@ -112,7 +113,8 @@ class ChampionMastery{
     /**
      * @param int $championPointsSinceLastLevel
      */
-    public function setChampionPointsSinceLastLevel(int $championPointsSinceLastLevel)
+    public function setChampionPointsSinceLastLevel(
+        int $championPointsSinceLastLevel)
     {
         $this->_championPointsSinceLastLevel = $championPointsSinceLastLevel;
     }
