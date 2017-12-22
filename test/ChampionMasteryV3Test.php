@@ -11,6 +11,20 @@ class ChampionMasteryV3Test extends TestCase
 {
     private $_summonerId = 25275660;
 
+    public function testGetMasteries()
+    {
+        if (!file_exists("apiKey.txt")) {
+          self::markTestSkipped("ApiKey not found!");
+        } else {
+            $response = ChampionMasteryV3::getMasteries(
+                Region::EUW,
+                $this->_summonerId
+            );
+            self::assertTrue(is_array($response));
+            self::assertTrue($response[0] instanceof ChampionMastery);
+        }
+    }
+
     public function testGetMasteryByChampion()
     {
         $championId = 412;

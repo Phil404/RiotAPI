@@ -8,6 +8,22 @@ class ChampionMasteryV3
 {
     private static $_route = "lol/champion-mastery/v3";
 
+    public static function getMasteries(string $region, int $summonerId)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+        $data = $apiHandler->sendRequest(
+            ChampionMasteryV3::$_route
+            . "/champion-masteries/by-summoner/"
+            . $summonerId
+        );
+        $collectedMasteries = [];
+        for ($i = 0; $i < sizeof($data); $i++) {
+            $collectedMasteries[$i] = new ChampionMastery($data[$i]);
+        }
+        return $collectedMasteries;
+    }
+
     public static function getMasteryByChampion(string $region,
                                                 int $summonerId,
                                                 int $championId)
