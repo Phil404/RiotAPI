@@ -1,6 +1,6 @@
 <?php
 
-namespace Phil404\RiotAPI\Tests\League;
+namespace Phil404\RiotAPI\Tests\Models\League;
 
 use PHPUnit\Framework\TestCase;
 use Phil404\RiotAPI\Models\League\MiniSeries;
