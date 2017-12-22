@@ -25,7 +25,7 @@ class IncidentTest extends TestCase
             "updates" => [$message]]
         );
 
-        self::assertTrue($incident->getActive());
+        self::assertTrue($incident->isActive());
         self::assertEquals("DateA", $incident->getCreatedAt());
         self::assertEquals(123, $incident->getId());
         self::assertEquals([$message], $incident->getUpdates());
@@ -58,11 +58,11 @@ class IncidentTest extends TestCase
         $incident = new Incident();
         $incident->setActive(true);
 
-        self::assertTrue($incident->getActive());
+        self::assertTrue($incident->isActive());
 
         $incident->setActive(false);
 
-        self::assertFalse($incident->getActive());
+        self::assertFalse($incident->isActive());
     }
 
     public function testSetAndGetCreatedAt()

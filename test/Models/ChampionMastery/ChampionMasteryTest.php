@@ -22,7 +22,7 @@ class ChampionMasteryTest extends TestCase
             ]
         );
 
-        self::assertTrue($championMastery->getChestGranted());
+        self::assertTrue($championMastery->isChestGranted());
         self::assertEquals(12, $championMastery->getChampionLevel());
         self::assertEquals(10, $championMastery->getChampionPoints());
         self::assertEquals(11, $championMastery->getChampionId());
@@ -38,16 +38,16 @@ class ChampionMasteryTest extends TestCase
         self::assertEquals(123, $championMastery->getLastPlayTime());
     }
 
-    public function testSetAndGetChestGranted()
+    public function testSetAndIsChestGranted()
     {
         $championMastery = new ChampionMastery();
         $championMastery->setChestGranted(true);
 
-        self::assertTrue($championMastery->getChestGranted());
+        self::assertTrue($championMastery->isChestGranted());
 
         $championMastery->setChestGranted(false);
 
-        self::assertFalse($championMastery->getChestGranted());
+        self::assertFalse($championMastery->isChestGranted());
     }
 
     public function testSetAndGetChampionLevel()

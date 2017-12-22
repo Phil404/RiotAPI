@@ -54,7 +54,7 @@ class ChampionMastery
     /**
      * @return boolean
      */
-    public function getChestGranted()
+    public function isChestGranted()
     {
         return $this->_chestGranted;
     }
