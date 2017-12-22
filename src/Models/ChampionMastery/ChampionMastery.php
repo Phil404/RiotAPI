@@ -13,6 +13,36 @@ class ChampionMastery
     private $_championPointsSinceLastLevel;
     private $_lastPlayTime;
 
+    public function __construct(array $args = [])
+    {
+        if (array_key_exists("chestGranted", $args)) {
+            $this->_chestGranted = $args['chestGranted'];
+        }
+        if (array_key_exists("championLevel", $args)) {
+            $this->_championLevel = $args['championLevel'];
+        }
+        if (array_key_exists("championPoints", $args)) {
+            $this->_championPoints = $args['championPoints'];
+        }
+        if (array_key_exists("championId", $args)) {
+            $this->_championId = $args['championId'];
+        }
+        if (array_key_exists("playerId", $args)) {
+            $this->_playerId = $args['playerId'];
+        }
+        if (array_key_exists("championPointsUntilNextLevel", $args)) {
+            $this->_championPointsUntilNextLevel =
+                $args['championPointsUntilNextLevel'];
+        }
+        if (array_key_exists("championPointsSinceLastLevel", $args)) {
+            $this->_championPointsSinceLastLevel =
+                $args['championPointsSinceLastLevel'];
+        }
+        if (array_key_exists("lastPlayTime", $args)) {
+            $this->_lastPlayTime = $args['lastPlayTime'];
+        }
+    }
+
     /**
      * @param boolean $chestGranted
      */

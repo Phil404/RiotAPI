@@ -7,6 +7,37 @@ use PHPUnit\Framework\TestCase;
 
 class ChampionMasteryTest extends TestCase
 {
+    public function testConstructor()
+    {
+        $championMastery = new ChampionMastery(
+            [
+                "chestGranted" => true,
+                "championLevel" => 12,
+                "championPoints" => 10,
+                "championId" => 11,
+                "playerId" => 9,
+                "championPointsUntilNextLevel" => 100,
+                "championPointsSinceLastLevel" => 99,
+                "lastPlayTime" => 123
+            ]
+        );
+
+        self::assertTrue($championMastery->getChestGranted());
+        self::assertEquals(12, $championMastery->getChampionLevel());
+        self::assertEquals(10, $championMastery->getChampionPoints());
+        self::assertEquals(11, $championMastery->getChampionId());
+        self::assertEquals(9, $championMastery->getPlayerId());
+        self::assertEquals(
+            100,
+            $championMastery->getChampionPointsUntilNextLevel()
+        );
+        self::assertEquals(
+            99,
+            $championMastery->getChampionPointsSinceLastLevel()
+        );
+        self::assertEquals(123, $championMastery->getLastPlayTime());
+    }
+
     public function testSetAndGetChestGranted()
     {
         $championMastery = new ChampionMastery();
