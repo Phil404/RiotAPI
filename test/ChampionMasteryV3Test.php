@@ -51,7 +51,7 @@ class ChampionMasteryV3Test extends TestCase
                 Region::EUW,
                 $this->_summonerId
             );
-            self::assertEquals("177", $response);
+            self::assertEquals("178", $response);
         }
     }
 }
