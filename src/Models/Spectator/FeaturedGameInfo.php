@@ -178,7 +178,7 @@ class FeaturedGameInfo
     /**
      * @param array|Observer $observers
      */
-    public function setObservers($observers): void
+    public function setObservers($observers)
     {
         if ($observers instanceof Observer) {
             $this->_observers = $observers;
