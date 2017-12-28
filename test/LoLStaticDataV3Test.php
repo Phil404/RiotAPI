@@ -10,9 +10,13 @@ class LoLStaticDataV3Test extends TestCase
 {
     public function testGetVersions()
     {
-        $response = LoLStaticDataV3::getVersions(Region::EUW);
+        if (!file_exists("apiKey.txt")) {
+            self::markTestSkipped("ApiKey not found!");
+        } else {
+            $response = LoLStaticDataV3::getVersions(Region::EUW);
 
-        self::assertTrue(is_array($response));
-        self::assertTrue(is_string($response[0]));
+            self::assertTrue(is_array($response));
+            self::assertTrue(is_string($response[0]));
+        }
     }
 }
