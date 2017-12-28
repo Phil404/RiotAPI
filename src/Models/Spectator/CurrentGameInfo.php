@@ -10,6 +10,48 @@ class CurrentGameInfo
     private $_gameMode;
     private $_mapId;
     private $_gameType;
+    private $_bannedChampions;
+    private $_observers;
+    private $_participants;
+    private $_gameLength;
+    private $_gameQueueConfigId;
+
+    public function __construct(array $args = [])
+    {
+        if (array_key_exists("gameId", $args)) {
+            $this->_gameId = $args['gameId'];
+        }
+        if (array_key_exists("gameStartTime", $args)) {
+            $this->_gameStartTime = $args['gameStartTime'];
+        }
+        if (array_key_exists("platformId", $args)) {
+            $this->_platformId = $args['platformId'];
+        }
+        if (array_key_exists("gameMode", $args)) {
+            $this->_gameMode = $args['gameMode'];
+        }
+        if (array_key_exists("mapId", $args)) {
+            $this->_mapId = $args['mapId'];
+        }
+        if (array_key_exists("gameType", $args)) {
+            $this->_gameType = $args['gameType'];
+        }
+        if (array_key_exists("bannedChampions", $args)) {
+            $this->setBannedChampions($args['bannedChampions']);
+        }
+        if (array_key_exists("observers", $args)) {
+            $this->setObservers($args['observers']);
+        }
+        if (array_key_exists("participants", $args)) {
+            $this->setParticipants($args['participants']);
+        }
+        if (array_key_exists("gameLength", $args)) {
+            $this->_gameLength = $args['gameLength'];
+        }
+        if (array_key_exists("gameQueueConfigId", $args)) {
+            $this->_gameQueueConfigId = $args['gameQueueConfigId'];
+        }
+    }
 
     /**
      * @param int $gameId
@@ -105,5 +147,110 @@ class CurrentGameInfo
     public function getGameType()
     {
         return $this->_gameType;
+    }
+
+    /**
+     * @param array $bannedChampions
+     */
+    public function setBannedChampions(array $bannedChampions)
+    {
+        $qBannedChampions = [];
+        foreach ($bannedChampions as $bannedChampion) {
+            $counter = sizeof($qBannedChampions);
+            if ($bannedChampion instanceof BannedChampion) {
+                $qBannedChampions[$counter] = $bannedChampion;
+            } else {
+                $qBannedChampions[$counter] =
+                    new BannedChampion($bannedChampion);
+            }
+        }
+        $this->_bannedChampions = $qBannedChampions;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBannedChampions()
+    {
+        return $this->_bannedChampions;
+    }
+
+    /**
+     * @param array|Observer $observers
+     */
+    public function setObservers($observers)
+    {
+        if ($observers instanceof Observer) {
+            $this->_observers = $observers;
+        } else {
+            $this->_observers = new Observer($observers);
+        }
+    }
+
+    /**
+     * @return Observer
+     */
+    public function getObservers()
+    {
+        return $this->_observers;
+    }
+
+    /**
+     * @param array $participants
+     */
+    public function setParticipants(array $participants)
+    {
+        $qParticipants = [];
+        foreach ($participants as $participant) {
+            $counter = sizeof($qParticipants);
+            if ($participant instanceof Participant) {
+                $qParticipants[$counter] = $participant;
+            } else {
+                $qParticipants[$counter] =
+                    new Participant($participant);
+            }
+        }
+
+        $this->_participants = $qParticipants;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParticipants()
+    {
+        return $this->_participants;
+    }
+
+    /**
+     * @param int $gameLength
+     */
+    public function setGameLength(int $gameLength)
+    {
+        $this->_gameLength = $gameLength;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGameLength()
+    {
+        return $this->_gameLength;
+    }
+
+    /**
+     * @param int $gameQueueConfigId
+     */
+    public function setGameQueueConfigId(int $gameQueueConfigId)
+    {
+        $this->_gameQueueConfigId = $gameQueueConfigId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGameQueueConfigId()
+    {
+        return $this->_gameQueueConfigId;
     }
 }
