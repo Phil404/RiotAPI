@@ -7,25 +7,9 @@ use PHPUnit\Framework\TestCase;
 
 class LevelTipTest extends TestCase
 {
-    public function testConstructor()
-    {
-        $object = new LevelTip(
-            [
-                "effect" => ["foo", "bar"],
-                "label" => ["john", "doe"]
-            ]
-        );
-
-        self::assertTrue(is_array($object->getEffect()));
-        self::assertEquals(2, sizeof($object->getEffect()));
-        self::assertTrue(is_array($object->getLabel()));
-        self::assertEquals(2, sizeof($object->getLabel()));
-    }
-
     public function testSetAndGetEffect()
     {
-        $object = new LevelTip();
-        $object->setEffect(["foo", "bar"]);
+        $object = new LevelTip(["effect" => ["foo", "bar"]]);
 
         self::assertTrue(is_array($object->getEffect()));
         self::assertEquals(2, sizeof($object->getEffect()));
@@ -38,8 +22,7 @@ class LevelTipTest extends TestCase
 
     public function testSetAndGetLabel()
     {
-        $object = new LevelTip();
-        $object->setLabel(["foo", "bar"]);
+        $object = new LevelTip(["label" => ["foo", "bar"]]);
 
         self::assertTrue(is_array($object->getLabel()));
         self::assertEquals(2, sizeof($object->getLabel()));

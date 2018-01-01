@@ -7,29 +7,9 @@ use Phil404\RiotAPI\Models\StaticData\SpellVars;
 
 class SpellVarsTest extends TestCase
 {
-    public function testConstructor()
-    {
-        $object = new SpellVars(
-            [
-                "ranksWith" => "foo",
-                "dyn" => "bar",
-                "link" => "john",
-                "coeff" => [1.23, 4.56],
-                "key" => "doe"
-            ]
-        );
-
-        self::assertEquals("foo", $object->getRanksWith());
-        self::assertEquals("bar", $object->getDyn());
-        self::assertEquals("john", $object->getLink());
-        self::assertEquals([1.23, 4.56], $object->getCoeff());
-        self::assertEquals("doe", $object->getKey());
-    }
-
     public function testSetAndGetRanksWith()
     {
-        $object = new SpellVars();
-        $object->setRanksWith("foo");
+        $object = new SpellVars(["ranksWith" => "foo"]);
 
         self::assertEquals("foo", $object->getRanksWith());
 
@@ -40,8 +20,7 @@ class SpellVarsTest extends TestCase
 
     public function testSetAndGetDyn()
     {
-        $object = new SpellVars();
-        $object->setDyn("foo");
+        $object = new SpellVars(["dyn" => "foo"]);
 
         self::assertEquals("foo", $object->getDyn());
 
@@ -52,8 +31,7 @@ class SpellVarsTest extends TestCase
 
     public function testSetAndGetLink()
     {
-        $object = new SpellVars();
-        $object->setLink("foo");
+        $object = new SpellVars(["link" => "foo"]);
 
         self::assertEquals("foo", $object->getLink());
 
@@ -64,10 +42,7 @@ class SpellVarsTest extends TestCase
 
     public function testSetAndGetCoeff()
     {
-        $object = new SpellVars();
-        $object->setCoeff(
-            [3.12, 13.37]
-        );
+        $object = new SpellVars(["coeff" => [3.12, 13.37]]);
 
         self::assertTrue(is_array($object->getCoeff()));
         self::assertEquals(2, sizeof($object->getCoeff()));
@@ -80,8 +55,7 @@ class SpellVarsTest extends TestCase
 
     public function testSetAndGetKey()
     {
-        $object = new SpellVars();
-        $object->setKey("foo");
+        $object = new SpellVars(["key" => "foo"]);
 
         self::assertEquals("foo", $object->getKey());
 

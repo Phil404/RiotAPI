@@ -7,33 +7,9 @@ use Phil404\RiotAPI\Models\StaticData\Image;
 
 class ImageTest extends TestCase
 {
-    public function testConstructor()
-    {
-        $object = new Image(
-            [
-                "full" => "foo",
-                "group" => "bar",
-                "sprite" => "foobar",
-                "h" => 1,
-                "w" => 2,
-                "y" => 3,
-                "x" => 4
-            ]
-        );
-
-        self::assertEquals("foo", $object->getFull());
-        self::assertEquals("bar", $object->getGroup());
-        self::assertEquals("foobar", $object->getSprite());
-        self::assertEquals(1, $object->getHeight());
-        self::assertEquals(2, $object->getWidth());
-        self::assertEquals(3, $object->getY());
-        self::assertEquals(4, $object->getX());
-    }
-
     public function testSetAndGetFull()
     {
-        $object = new Image();
-        $object->setFull("foo");
+        $object = new Image(["full" => "foo"]);
 
         self::assertEquals("foo", $object->getFull());
 
@@ -44,8 +20,7 @@ class ImageTest extends TestCase
 
     public function testSetAndGetGroup()
     {
-        $object = new Image();
-        $object->setGroup("foo");
+        $object = new Image(["group" => "foo"]);
 
         self::assertEquals("foo", $object->getGroup());
 
@@ -56,8 +31,7 @@ class ImageTest extends TestCase
 
     public function testSetAndGetSprite()
     {
-        $object = new Image();
-        $object->setSprite("foo");
+        $object = new Image(["sprite" => "foo"]);
 
         self::assertEquals("foo", $object->getSprite());
 
@@ -68,8 +42,7 @@ class ImageTest extends TestCase
 
     public function testSetAndGetHeight()
     {
-        $object = new Image();
-        $object->setHeight(1);
+        $object = new Image(["h" => 1]);
 
         self::assertEquals(1, $object->getHeight());
 
@@ -80,8 +53,7 @@ class ImageTest extends TestCase
 
     public function testSetAndGetWidth()
     {
-        $object = new Image();
-        $object->setWidth(1);
+        $object = new Image(["w" => 1]);
 
         self::assertEquals(1, $object->getWidth());
 
@@ -92,8 +64,7 @@ class ImageTest extends TestCase
 
     public function testSetAndGetY()
     {
-        $object = new Image();
-        $object->setY(1);
+        $object = new Image(["y" => 1]);
 
         self::assertEquals(1, $object->getY());
 
@@ -104,8 +75,7 @@ class ImageTest extends TestCase
 
     public function testSetAndGetX()
     {
-        $object = new Image();
-        $object->setX(1);
+        $object = new Image(["x" => 1]);
 
         self::assertEquals(1, $object->getX());
 
