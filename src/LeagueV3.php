@@ -27,24 +27,6 @@ class LeagueV3
         }
     }
 
-    public static function getAllLeaguesForSummoner(string $region,
-                                                    int $summonerId)
-    {
-        $apiHandler = new ApiHandler();
-        $apiHandler->setRegion($region);
-        $data = $apiHandler->sendRequest(
-            LeagueV3::$_route
-            . "/leagues/by-summoner/"
-            . $summonerId
-        );
-
-        if (is_null($data)) {
-            return null;
-        } else {
-            return new LeagueList($data);
-        }
-    }
-
     public static function getLeagueById(string $region, string $leagueId)
     {
         $apiHandler = new ApiHandler();
