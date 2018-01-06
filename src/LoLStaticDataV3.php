@@ -2,12 +2,29 @@
 
 namespace Phil404\RiotAPI;
 
+use Phil404\RiotAPI\Models\StaticData\Realm;
 use Phil404\RiotAPI\Models\StaticData\SummonerSpell;
 use Phil404\RiotAPI\Models\StaticData\SummonerSpellList;
 
 class LoLStaticDataV3
 {
     private static $_route = "lol/static-data/v3/";
+
+    public static function getRealms(string $region)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+
+        $data = $apiHandler->sendRequest(
+            LoLStaticDataV3::$_route
+            . "realms"
+        );
+
+        if (!is_null($data)) {
+            $data = new Realm($data);
+        }
+        return $data;
+    }
 
     public static function getSummonerSpells(string $region, array $parameters)
     {
