@@ -46,7 +46,7 @@ getProfileIcons() | not implemented | not implemented
 getRealms() | not implemented | not implemented
 getRunes() | not implemented | not implemented
 getRuneById() | not implemented | not implemented
-getSummonerSpells() | not implemented | not implemented
+getSummonerSpells() | string $region, array $parameters | SummonerSpellList
 getSummonerSpellById() | string $region, int $id, array $parameters | SummonerSpell
 getVersions() | string $region | Array[string]
 
