@@ -26,6 +26,7 @@ class ApiHandler
         $array['api_key'] = $this->_apiKey;
         $query = $this->createQuery($route, $array);
 
+        var_dump($query);
         $client = new Client();
 
         try {
@@ -46,7 +47,11 @@ class ApiHandler
         foreach (array_keys($array) as $key) {
             if ($array[$key] != "") {
                 if (strlen($parameters) > 0) $parameters .= "&";
-                $parameters .= $key . "=" . $array[$key];
+                if ($array[$key] === true) {
+                    $parameters .= $key . "=true";
+                } else {
+                    $parameters .= $key . "=" . $array[$key];
+                }
             }
         }
 
