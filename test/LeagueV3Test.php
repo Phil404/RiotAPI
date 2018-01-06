@@ -26,20 +26,6 @@ class LeagueV3Test extends TestCase
         }
     }
 
-    public function testGetAllLeaguesForSummoner()
-    {
-        if (!file_exists("apiKey.txt")) {
-            self::markTestSkipped("ApiKey not found!");
-        } else {
-            $response = LeagueV3::getAllLeaguesForSummoner(
-                Region::EUW,
-                $this->_summonerId
-            );
-
-            self::assertTrue($response instanceof LeagueList);
-        }
-    }
-
     public function testGetLeagueById()
     {
         $leagueId = "b364c640-4180-30a3-b27e-2f03e1a1ac7a";
