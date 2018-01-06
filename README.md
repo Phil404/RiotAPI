@@ -43,7 +43,7 @@ getMaps() | not implemented | not implemented
 getMasteries() | not implemented | not implemented
 getMasteryById() | not implemented | not implemented
 getProfileIcons() | not implemented | not implemented
-getRealms() | not implemented | not implemented
+getRealms() | string $region | Realm
 getRunes() | disabled | request if needed
 getRuneById() | disabled | request if needed
 getSummonerSpells() | string $region, array $parameters | SummonerSpellList
