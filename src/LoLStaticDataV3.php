@@ -37,7 +37,6 @@ class LoLStaticDataV3
             $forQuery
         );
 
-        var_dump($data);
         if (!is_null($data)) {
             $data = new SummonerSpellList($data);
         }

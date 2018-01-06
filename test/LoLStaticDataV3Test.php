@@ -20,7 +20,6 @@ class LoLStaticDataV3Test extends TestCase
                 ["locale" => "en_US"]
             );
 
-            var_dump($response);
             self::assertTrue($response instanceof SummonerSpellList);
             self::assertNotNull($response->getVersion());
         }

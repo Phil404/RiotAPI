@@ -26,7 +26,6 @@ class ApiHandler
         $array['api_key'] = $this->_apiKey;
         $query = $this->createQuery($route, $array);
 
-        var_dump($query);
         $client = new Client();
 
         try {

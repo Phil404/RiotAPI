@@ -44,8 +44,8 @@ getMasteries() | not implemented | not implemented
 getMasteryById() | not implemented | not implemented
 getProfileIcons() | not implemented | not implemented
 getRealms() | not implemented | not implemented
-getRunes() | not implemented | not implemented
-getRuneById() | not implemented | not implemented
+getRunes() | disabled | request if needed
+getRuneById() | disabled | request if needed
 getSummonerSpells() | string $region, array $parameters | SummonerSpellList
 getSummonerSpellById() | string $region, int $id, array $parameters | SummonerSpell
 getVersions() | string $region | Array[string]
