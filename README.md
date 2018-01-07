@@ -46,8 +46,8 @@ getItemById() | not implemented | not implemented
 getLanguageStrings() | not implemented | not implemented
 getLanguages() | not implemented | not implemented
 getMaps() | not implemented | not implemented
-getMasteries() | not implemented | not implemented
-getMasteryById() | not implemented | not implemented
+getMasteries() | disabled | request if needed
+getMasteryById() | disabled | request if needed
 getProfileIcons() | not implemented | not implemented
 getRealms() | string $region | Realm
 getRunes() | disabled | request if needed
