@@ -4,6 +4,7 @@ namespace Phil404\RiotAPI\Tests;
 
 use Phil404\RiotAPI\LoLStaticDataV3;
 use Phil404\RiotAPI\Models\Region;
+use Phil404\RiotAPI\Models\StaticData\LanguageStrings;
 use Phil404\RiotAPI\Models\StaticData\MapData;
 use Phil404\RiotAPI\Models\StaticData\ProfileIconData;
 use Phil404\RiotAPI\Models\StaticData\Realm;
@@ -13,6 +14,20 @@ use PHPUnit\Framework\TestCase;
 
 class LoLStaticDataV3Test extends TestCase
 {
+    public function testGetLanguageStrings()
+    {
+        if (!file_exists("apiKey.txt")) {
+            self::markTestSkipped("ApiKey not found!");
+        } else {
+            $response = LoLStaticDataV3::getLanguageStrings(
+                Region::EUW,
+                ["locale" => "en_US"]
+            );
+
+            self::assertTrue($response instanceof LanguageStrings);
+        }
+    }
+
     public function testGetLanguages()
     {
         if (!file_exists("apiKey.txt")) {

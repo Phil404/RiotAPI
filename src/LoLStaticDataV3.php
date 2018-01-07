@@ -2,6 +2,7 @@
 
 namespace Phil404\RiotAPI;
 
+use Phil404\RiotAPI\Models\StaticData\LanguageStrings;
 use Phil404\RiotAPI\Models\StaticData\MapData;
 use Phil404\RiotAPI\Models\StaticData\ProfileIconData;
 use Phil404\RiotAPI\Models\StaticData\Realm;
@@ -11,6 +12,31 @@ use Phil404\RiotAPI\Models\StaticData\SummonerSpellList;
 class LoLStaticDataV3
 {
     private static $_route = "lol/static-data/v3/";
+
+    public static function getLanguageStrings(string $region, array $parameters)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+
+        $forQuery = [];
+        if (!empty($parameters['locale'])) {
+            $forQuery['locale'] = $parameters['locale'];
+        }
+        if (!empty($parameters['version'])) {
+            $forQuery['version'] = $parameters['version'];
+        }
+
+        $data = $apiHandler->sendRequest(
+            LoLStaticDataV3::$_route
+            . "language-strings",
+            $forQuery
+        );
+
+        if (!is_null($data)) {
+            $data = new LanguageStrings($data);
+        }
+        return $data;
+    }
 
     public static function getLanguages(string $region)
     {
@@ -33,7 +59,7 @@ class LoLStaticDataV3
             $forQuery['locale'] = $parameters['locale'];
         }
         if (!empty($parameters['version'])) {
-            $forQuery['version'] = $parameters['locale'];
+            $forQuery['version'] = $parameters['version'];
         }
 
         $data = $apiHandler->sendRequest(
@@ -58,7 +84,7 @@ class LoLStaticDataV3
             $forQuery['locale'] = $parameters['locale'];
         }
         if (!empty($parameters['version'])) {
-            $forQuery['version'] = $parameters['locale'];
+            $forQuery['version'] = $parameters['version'];
         }
 
         $data = $apiHandler->sendRequest(
@@ -108,7 +134,7 @@ class LoLStaticDataV3
             $forQuery['locale'] = $parameters['locale'];
         }
         if (!empty($parameters['version'])) {
-            $forQuery['version'] = $parameters['locale'];
+            $forQuery['version'] = $parameters['version'];
         }
 
         $data = $apiHandler->sendRequest(

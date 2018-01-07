@@ -43,7 +43,7 @@ getChampions() | not implemented | not implemented
 getChampionById() | not implemented | not implemented
 getItems() | not implemented | not implemented
 getItemById() | not implemented | not implemented
-getLanguageStrings() | not implemented | not implemented
+getLanguageStrings() | string $region, array $parameters | LanguageStrings
 getLanguages() | string $region | Array[string]
 getMaps() | string $region, array $parameters | MapData
 getMasteries() | disabled | request if needed
