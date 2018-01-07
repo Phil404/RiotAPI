@@ -4,6 +4,7 @@ namespace Phil404\RiotAPI\Tests;
 
 use Phil404\RiotAPI\LoLStaticDataV3;
 use Phil404\RiotAPI\Models\Region;
+use Phil404\RiotAPI\Models\StaticData\MapData;
 use Phil404\RiotAPI\Models\StaticData\ProfileIconData;
 use Phil404\RiotAPI\Models\StaticData\Realm;
 use Phil404\RiotAPI\Models\StaticData\SummonerSpell;
@@ -12,6 +13,21 @@ use PHPUnit\Framework\TestCase;
 
 class LoLStaticDataV3Test extends TestCase
 {
+    public function testGetMapData()
+    {
+        if (!file_exists("apiKey.txt")) {
+            self::markTestSkipped("ApiKey not found!");
+        } else {
+            $response = LoLStaticDataV3::getMapData(
+                Region::EUW,
+                ["locale" => "en_US"]
+            );
+
+            self::assertTrue($response instanceof MapData);
+            self::assertNotNull($response->getVersion());
+        }
+    }
+
     public function testGetProfileIcons()
     {
         if (!file_exists("apiKey.txt")) {

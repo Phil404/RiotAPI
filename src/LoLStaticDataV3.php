@@ -2,6 +2,7 @@
 
 namespace Phil404\RiotAPI;
 
+use Phil404\RiotAPI\Models\StaticData\MapData;
 use Phil404\RiotAPI\Models\StaticData\ProfileIconData;
 use Phil404\RiotAPI\Models\StaticData\Realm;
 use Phil404\RiotAPI\Models\StaticData\SummonerSpell;
@@ -10,6 +11,31 @@ use Phil404\RiotAPI\Models\StaticData\SummonerSpellList;
 class LoLStaticDataV3
 {
     private static $_route = "lol/static-data/v3/";
+
+    public static function getMapData(string $region, array $parameters)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+
+        $forQuery = [];
+        if (!empty($parameters['locale'])) {
+            $forQuery['locale'] = $parameters['locale'];
+        }
+        if (!empty($parameters['version'])) {
+            $forQuery['version'] = $parameters['locale'];
+        }
+
+        $data = $apiHandler->sendRequest(
+            LoLStaticDataV3::$_route
+            . "maps",
+            $forQuery
+        );
+
+        if (!is_null($data)) {
+            $data = new MapData($data);
+        }
+        return $data;
+    }
 
     public static function getProfileIcons(string $region, array $parameters)
     {
