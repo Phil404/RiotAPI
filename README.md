@@ -48,7 +48,7 @@ getLanguages() | not implemented | not implemented
 getMaps() | not implemented | not implemented
 getMasteries() | disabled | request if needed
 getMasteryById() | disabled | request if needed
-getProfileIcons() | not implemented | not implemented
+getProfileIcons() | string $region, array $parameters | ProfileIconData
 getRealms() | string $region | Realm
 getRunes() | disabled | request if needed
 getRuneById() | disabled | request if needed
