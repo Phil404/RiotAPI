@@ -12,6 +12,17 @@ class LoLStaticDataV3
 {
     private static $_route = "lol/static-data/v3/";
 
+    public static function getLanguages(string $region)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+
+        return $apiHandler->sendRequest(
+            LoLStaticDataV3::$_route
+            . "languages"
+        );
+    }
+
     public static function getMapData(string $region, array $parameters)
     {
         $apiHandler = new ApiHandler();

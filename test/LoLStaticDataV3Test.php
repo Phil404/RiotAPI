@@ -13,6 +13,17 @@ use PHPUnit\Framework\TestCase;
 
 class LoLStaticDataV3Test extends TestCase
 {
+    public function testGetLanguages()
+    {
+        if (!file_exists("apiKey.txt")) {
+            self::markTestSkipped("ApiKey not found!");
+        } else {
+            $response = LoLStaticDataV3::getLanguages(Region::EUW);
+
+            self::assertTrue(is_array($response));
+        }
+    }
+
     public function testGetMapData()
     {
         if (!file_exists("apiKey.txt")) {
