@@ -2,6 +2,7 @@
 
 namespace Phil404\RiotAPI;
 
+use Phil404\RiotAPI\Models\StaticData\Item;
 use Phil404\RiotAPI\Models\StaticData\LanguageStrings;
 use Phil404\RiotAPI\Models\StaticData\MapData;
 use Phil404\RiotAPI\Models\StaticData\ProfileIconData;
@@ -12,6 +13,36 @@ use Phil404\RiotAPI\Models\StaticData\SummonerSpellList;
 class LoLStaticDataV3
 {
     private static $_route = "lol/static-data/v3/";
+
+    public static function getItemById(string $region,
+                                       int $id,
+                                       array $parameters)
+    {
+        $apiHandler = new ApiHandler();
+        $apiHandler->setRegion($region);
+
+        if (!empty($parameters['tags'])) {
+            $forQuery['tags'] = $parameters['tags'];
+        } else {
+            $forQuery['tags'] = "all";
+        }
+        if (!empty($parameters['locale'])) {
+            $forQuery['locale'] = $parameters['locale'];
+        }
+        if (!empty($parameters['version'])) {
+            $forQuery['version'] = $parameters['version'];
+        }
+
+        $data = $apiHandler->sendRequest(
+            LoLStaticDataV3::$_route
+            . "items/"
+            . $id
+        );
+
+        if (is_null($data)) return null;
+
+        return new Item($data);
+    }
 
     public static function getLanguageStrings(string $region, array $parameters)
     {
