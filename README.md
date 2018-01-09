@@ -37,21 +37,22 @@ getMasterLeague() | string $region, string $queue | LeagueList
 getAllLeaguePositionsForSummoner() | string $region, int $summonerId | Array[LeaguePosition]
 
 #### Endpoint: LoLStaticDataV3 (in progress)
+##### Note: Parameters are optional parameters in the api like 'version' or 'tags'
 Call | Parameters | Return
 ---- | ---------- | ------
 getChampions() | not implemented | not implemented
 getChampionById() | not implemented | not implemented
 getItems() | not implemented | not implemented
-getItemById() | not implemented | not implemented
+getItemById() | string $region, int $id, array $parameters | Item
 getLanguageStrings() | string $region, array $parameters | LanguageStrings
 getLanguages() | string $region | Array[string]
 getMaps() | string $region, array $parameters | MapData
-getMasteries() | disabled | request if needed
-getMasteryById() | disabled | request if needed
+getMasteries() | not supported | request if needed
+getMasteryById() | not supported | request if needed
 getProfileIcons() | string $region, array $parameters | ProfileIconData
 getRealms() | string $region | Realm
-getRunes() | disabled | request if needed
-getRuneById() | disabled | request if needed
+getRunes() | not supported | request if needed
+getRuneById() | not supported | request if needed
 getSummonerSpells() | string $region, array $parameters | SummonerSpellList
 getSummonerSpellById() | string $region, int $id, array $parameters | SummonerSpell
 getVersions() | string $region | Array[string]
