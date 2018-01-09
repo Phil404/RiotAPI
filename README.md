@@ -37,7 +37,7 @@ getMasterLeague() | string $region, string $queue | LeagueList
 getAllLeaguePositionsForSummoner() | string $region, int $summonerId | Array[LeaguePosition]
 
 #### Endpoint: LoLStaticDataV3 (in progress)
-##### Note: Parameters are optional parameters in the api like 'version' or 'tags'
+###### Note: Parameters are optional parameters in the api like 'version' or 'tags'
 Call | Parameters | Return
 ---- | ---------- | ------
 getChampions() | not implemented | not implemented
